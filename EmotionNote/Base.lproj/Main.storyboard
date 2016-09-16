@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Bubble View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="BubbleViewController" customModule="EmotionNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="231"/>
+        </scene>
+        <!--Daily Chart View Controller-->
+        <scene sceneID="7so-2E-eVu">
+            <objects>
+                <viewController storyboardIdentifier="DailyChartViewController" id="tFP-c5-dLC" customClass="DailyChartViewController" customModule="EmotionNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dM5-bL-VWn"/>
+                        <viewControllerLayoutGuide type="bottom" id="lzE-I9-8Od"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CSx-j5-tvx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ffM-Jk-pyY">
+                                <rect key="frame" x="0.0" y="85" width="600" height="515"/>
+                                <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WhB-Ie-M1x">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="D5q-xj-mhb" customClass="ChartCollectionViewCell" customModule="EmotionNote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="tFP-c5-dLC" id="lWy-KS-BDq"/>
+                                    <outlet property="delegate" destination="tFP-c5-dLC" id="eWB-N8-G0Z"/>
+                                </connections>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FJH-6O-JxD">
+                                <rect key="frame" x="281" y="40" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FJH-6O-JxD" firstAttribute="top" secondItem="dM5-bL-VWn" secondAttribute="bottom" constant="20" id="5yv-yE-D2h"/>
+                            <constraint firstItem="lzE-I9-8Od" firstAttribute="top" secondItem="ffM-Jk-pyY" secondAttribute="bottom" id="730-DB-ncB"/>
+                            <constraint firstItem="ffM-Jk-pyY" firstAttribute="top" secondItem="FJH-6O-JxD" secondAttribute="bottom" constant="8" id="NIb-mP-Mgx"/>
+                            <constraint firstItem="FJH-6O-JxD" firstAttribute="centerX" secondItem="CSx-j5-tvx" secondAttribute="centerX" id="Uci-np-BfU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ffM-Jk-pyY" secondAttribute="trailing" constant="-20" id="bF9-eN-rDl"/>
+                            <constraint firstItem="ffM-Jk-pyY" firstAttribute="leading" secondItem="CSx-j5-tvx" secondAttribute="leadingMargin" constant="-20" id="pcm-W6-yZp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ffM-Jk-pyY" id="H17-pn-fyl"/>
+                        <outlet property="pageControl" destination="FJH-6O-JxD" id="jHb-Bc-5jT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="11H-Rh-HNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819" y="190"/>
+        </scene>
+    </scenes>
+</document>
