@@ -15,8 +15,8 @@ protocol BubbleViewRouter: class {
 final class BubbleViewRouterImpl: BubbleViewRouter {
     func nextScreen(viewController: UIViewController?, transition: UIViewControllerTransitioningDelegate?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("DailyChartViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "DailyChartViewController")
         vc.transitioningDelegate = transition
-        viewController?.presentViewController(vc, animated: true, completion: nil)
+        viewController?.present(vc, animated: true, completion: nil)
     }
 }

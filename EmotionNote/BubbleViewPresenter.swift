@@ -11,7 +11,7 @@ import RxSwift
 
 protocol BubbleViewPresenter: class {
     var rx_emotions: Variable<[Emotion]> { get }
-    func didSelectAtIndex(index: Int)
+    func didSelectAtIndex(_ index: Int)
 }
 
 final class BubbleViewPresenterImpl: BubbleViewPresenter {
@@ -25,7 +25,7 @@ final class BubbleViewPresenterImpl: BubbleViewPresenter {
         }
     }
     
-    func didSelectAtIndex(index: Int) {
-        interactor?.storeEmotion(rx_emotions.value[index])
+    func didSelectAtIndex(_ index: Int) {
+        interactor?.storeEmotion(emotion: rx_emotions.value[index])
     }
 }

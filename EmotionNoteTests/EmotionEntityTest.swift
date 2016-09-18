@@ -21,7 +21,7 @@ class EmotionEntityTest: QuickSpec {
         describe("感情を保存して取得できること") {
             context("データがないとき") {
                 it("データがなければ空で返る") {
-                    expect(EmotionDataStore.emotionsWithDate(NSDate()).count).to(equal(0))
+                    expect(EmotionDataStore.emotionsWithDate(Date()).count).to(equal(0))
                     
                     let results = EmotionDataStore.emotionsWithPeriodPerHours(.All)
                     expect(results.count).to(equal(24))
@@ -44,7 +44,7 @@ class EmotionEntityTest: QuickSpec {
                 it("１件保存すれば１件増えて返る") {
                     EmotionDataStore.storeEmotion(.Enjoy)
                     
-                    expect(EmotionDataStore.emotionsWithDate(NSDate()).count).to(equal(1))
+                    expect(EmotionDataStore.emotionsWithDate(Date()).count).to(equal(1))
                     
                     let emotion = EmotionDataStore.emotionsWithPeriod(.All)
                     expect(emotion.happyCount).to(equal(0))
@@ -64,10 +64,10 @@ class EmotionEntityTest: QuickSpec {
                 }
                 
                 it("指定日付のデータが取得できること") {
-                    let results = EmotionDataStore.emotionsWithDate(NSDate())
+                    let results = EmotionDataStore.emotionsWithDate(Date())
                     expect(results.count).to(equal(4))
                     
-                    let oldDate = NSDate(year: 2016, month: 8, day: 1, hour: 0, minute: 0, second: 0)
+                    let oldDate = Date(year: 2016, month: 8, day: 1, hour: 0, minute: 0, second: 0)
                     let oldResults = EmotionDataStore.emotionsWithDate(oldDate)
                     expect(oldResults.count).to(equal(0))
                 }
@@ -76,7 +76,7 @@ class EmotionEntityTest: QuickSpec {
                     let results = EmotionDataStore.emotionsWithPeriodPerHours(.All)
                     expect(results.count).to(equal(24))
                     
-                    let currentDate = NSDate()
+                    let currentDate = Date()
                     expect(results[currentDate.hour].enjoyCount).to(equal(1))
                     expect(results[currentDate.hour].happyCount).to(equal(1))
                     expect(results[currentDate.hour].sadCount).to(equal(1))
@@ -87,7 +87,7 @@ class EmotionEntityTest: QuickSpec {
                     let results = EmotionDataStore.emotionWithWeek(.All)
                     expect(results.count).to(equal(8)) // 1開始で7曜日。0は空データ
                     
-                    let currentDate = NSDate()
+                    let currentDate = Date()
                     expect(results[currentDate.weekday].enjoyCount).to(equal(1))
                     expect(results[currentDate.weekday].happyCount).to(equal(1))
                     expect(results[currentDate.weekday].sadCount).to(equal(1))

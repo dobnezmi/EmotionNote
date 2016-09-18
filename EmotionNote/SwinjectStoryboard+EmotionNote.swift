@@ -6,7 +6,8 @@
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 
-import Swinject
+import SwinjectStoryboard
+
 
 extension SwinjectStoryboard {
     class func setup() {

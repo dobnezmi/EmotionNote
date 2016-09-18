@@ -26,12 +26,12 @@ final class EmotionDataStore {
     // MARK: -- Fetch
     
     // 指定日付のエモーションデータ取得
-    class func emotionsWithDate(targetDate: NSDate) -> [EmotionEntity] {
-        let stDate = NSDate(era: nil, year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
-        let edDate = NSDate(era: nil, year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
+    class func emotionsWithDate(targetDate: Date) -> [EmotionEntity] {
+        let stDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
+        let edDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
         
         var emotes: [EmotionEntity] = []
-        if let results = realm?.objects(EmotionEntity).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
+        if let results = realm?.objects(EmotionEntity.self).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
             for result in results {
                 emotes.append(result)
             }
@@ -39,20 +39,20 @@ final class EmotionDataStore {
         return emotes
     }
     
-    class func rx_emotionsWithDate(targetDate: NSDate) -> Observable<[EmotionEntity]> {
+    class func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]> {
         return Observable.create { observer in
-            let stDate = NSDate(era: nil, year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
-            let edDate = NSDate(era: nil, year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
+            let stDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
+            let edDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
             
             var emotes: [EmotionEntity] = []
-            if let results = realm?.objects(EmotionEntity).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
+            if let results = realm?.objects(EmotionEntity.self).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
                 for result in results {
                     emotes.append(result)
                 }
             }
             
             observer.onNext(emotes)
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
     
@@ -65,23 +65,23 @@ final class EmotionDataStore {
         }
         
         var queryResult: Results<EmotionEntity>?
-        if let filterStr = filterStringWithPeriod(period) {
-            queryResult = realm?.objects(EmotionEntity).filter(filterStr)
+        if let filterStr = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
         } else {
-            queryResult = realm?.objects(EmotionEntity)
+            queryResult = realm?.objects(EmotionEntity.self)
         }
-        
-        if let results = queryResult {            
-            _ = results.map { model in
-                switch(model.emotion) {
+
+        if let results = queryResult {
+            for result in results {
+                switch result.emotion {
                 case Emotion.Happy.rawValue:
-                    resultsPerHour[model.hour].happyCount += 1
+                    resultsPerHour[result.hour].happyCount += 1
                 case Emotion.Enjoy.rawValue:
-                    resultsPerHour[model.hour].enjoyCount += 1
+                    resultsPerHour[result.hour].enjoyCount += 1
                 case Emotion.Sad.rawValue:
-                    resultsPerHour[model.hour].sadCount += 1
+                    resultsPerHour[result.hour].sadCount += 1
                 case Emotion.Frustrated.rawValue:
-                    resultsPerHour[model.hour].frustCount += 1
+                    resultsPerHour[result.hour].frustCount += 1
                 default:
                     break
                 }
@@ -100,10 +100,10 @@ final class EmotionDataStore {
             }
             
             var queryResult: Results<EmotionEntity>?
-            if let filterStr = filterStringWithPeriod(period) {
-                queryResult = realm?.objects(EmotionEntity).filter(filterStr)
+            if let filterStr = filterStringWithPeriod(period: period) {
+                queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
             } else {
-                queryResult = realm?.objects(EmotionEntity)
+                queryResult = realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
@@ -125,7 +125,7 @@ final class EmotionDataStore {
             
             observer.onNext(resultsPerHour)
             
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
     
@@ -138,10 +138,10 @@ final class EmotionDataStore {
         }
         
         var queryResult: Results<EmotionEntity>?
-        if let filterStr = filterStringWithPeriod(period) {
-            queryResult = realm?.objects(EmotionEntity).filter(filterStr)
+        if let filterStr = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
         } else {
-            queryResult = realm?.objects(EmotionEntity)
+            queryResult = realm?.objects(EmotionEntity.self)
         }
         
         if let results = queryResult {
@@ -174,10 +174,10 @@ final class EmotionDataStore {
             }
             
             var queryResult: Results<EmotionEntity>?
-            if let filterStr = filterStringWithPeriod(period) {
-                queryResult = realm?.objects(EmotionEntity).filter(filterStr)
+            if let filterStr = filterStringWithPeriod(period: period) {
+                queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
             } else {
-                queryResult = realm?.objects(EmotionEntity)
+                queryResult = realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
@@ -198,7 +198,7 @@ final class EmotionDataStore {
             }
             observer.onNext(resultsWeekday)
             
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
     
@@ -206,15 +206,15 @@ final class EmotionDataStore {
     class func emotionsWithPeriod(period: EmotionPeriod) -> (EmotionCount) {
         var queryResult: Results<EmotionEntity>?
         
-        if let predicate = filterStringWithPeriod(period) {
-            queryResult = realm?.objects(EmotionEntity).filter(predicate)
+        if let predicate = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(predicate)
         } else {
-            queryResult = realm?.objects(EmotionEntity)
+            queryResult = realm?.objects(EmotionEntity.self)
         }
         
         if let results = queryResult {
             let emoteCount = results.reduce(EmotionCount(),
-                                            combine: { count, result in
+                                            { count, result in
                                                 
                 switch(result.emotion) {
                 case Emotion.Happy.rawValue:
@@ -234,20 +234,20 @@ final class EmotionDataStore {
         return EmotionCount()
     }
     
-    class func emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
+    class func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
         return Observable.create { observer in
             
             var queryResult: Results<EmotionEntity>?
             
-            if let predicate = filterStringWithPeriod(period) {
-                queryResult = realm?.objects(EmotionEntity).filter(predicate)
+            if let predicate = filterStringWithPeriod(period: period) {
+                queryResult = realm?.objects(EmotionEntity.self).filter(predicate)
             } else {
-                queryResult = realm?.objects(EmotionEntity)
+                queryResult = realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
                 let emoteCount = results.reduce(EmotionCount(),
-                    combine: { count, result in
+                                                { count, result in
                         
                         switch(result.emotion) {
                         case Emotion.Happy.rawValue:
@@ -265,22 +265,22 @@ final class EmotionDataStore {
                 observer.onNext(emoteCount)
             }
             
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
     
     private class func filterStringWithPeriod(period: EmotionPeriod) -> NSPredicate? {
-        let today = NSDate()
+        let today = Date()
         
         switch(period) {
         case .All:
             return nil
         case .Month:
-            let stDate = today.add(months: -1)
-            return NSPredicate(format: "emoteAt >= %@ AND emoteAt <= %@", stDate, today)
+            let stDate = today.add(month: -1)
+            return NSPredicate(format: "emoteAt >= %@ AND emoteAt <= %@", stDate as CVarArg, today as CVarArg)
         case .Week:
-            let stDate = today.add(weeks: -1)
-            return NSPredicate(format: "emoteAt >= %@ AND emoteAt <= %@", stDate, today)
+            let stDate = today.add(week: -1)
+            return NSPredicate(format: "emoteAt >= %@ AND emoteAt <= %@", stDate as CVarArg, today as CVarArg)
         }
     }
     
@@ -288,7 +288,7 @@ final class EmotionDataStore {
     // エモーション保存
     class func storeEmotion(emotion: Emotion) {
         let emoteObject = EmotionEntity()
-        emoteObject.emoteAt = NSDate()
+        emoteObject.emoteAt = Date()
         emoteObject.emotion = emotion.rawValue
         emoteObject.hour    = emoteObject.emoteAt.hour
         emoteObject.weekday = emoteObject.emoteAt.weekday

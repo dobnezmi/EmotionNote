@@ -16,27 +16,27 @@ extension ChartCollectionViewCell {
         }
         
         captionLabel1st = UILabel()
-        createCaptionLabel(captionLabel1st, caption: "今日の感情", offsetY: 44)
+        createCaptionLabel(targetLabel: captionLabel1st, caption: "今日の感情", offsetY: 44)
         var posY = captionLabel1st.frame.origin.y + captionLabel1st.frame.height + 8
         lineChartViewToday = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartViewToday, emoteAt: NSDate())
+        createLineChart(lineChartView: lineChartViewToday, emoteAt: Date())
         
         posY = lineChartViewToday.frame.origin.y + lineChartViewToday.frame.height + 16
         captionLabel2nd = UILabel()
-        createCaptionLabel(captionLabel2nd, caption: "昨日の感情", offsetY: posY)
+        createCaptionLabel(targetLabel: captionLabel2nd, caption: "昨日の感情", offsetY: posY)
         posY = captionLabel2nd.frame.origin.y + captionLabel2nd.frame.height + 8
         lineChartViewYesterday = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartViewYesterday, emoteAt: NSDate().add(days: -1))
+        createLineChart(lineChartView: lineChartViewYesterday, emoteAt: Date().add(days: -1))
         
         posY = lineChartViewYesterday.frame.origin.y + lineChartViewYesterday.frame.height + 16
         captionLabel3rd = UILabel()
-        createCaptionLabel(captionLabel3rd, caption: "一昨日の感情", offsetY: posY)
+        createCaptionLabel(targetLabel: captionLabel3rd, caption: "一昨日の感情", offsetY: posY)
         posY = captionLabel3rd.frame.origin.y + captionLabel3rd.frame.height + 8
         lineChartViewBefore = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartViewBefore, emoteAt: NSDate().add(days: -2))
+        createLineChart(lineChartView: lineChartViewBefore, emoteAt: Date().add(days: -2))
         
         // TODO: ↓ この計算、最後の１００が意味不明。でも無いと全て表示しきれない。時間があるときに。。
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: posY + 250 + 16 + 100)
@@ -44,28 +44,28 @@ extension ChartCollectionViewCell {
     
     func createCaptionLabel(targetLabel: UILabel, caption: String, offsetY: CGFloat) {
         targetLabel.text = caption
-        targetLabel.font = UIFont.boldSystemFontOfSize(17) // TODO: 変更する
-        targetLabel.textColor = UIColor.whiteColor()
-        targetLabel.textAlignment = .Center
+        targetLabel.font = UIFont.boldSystemFont(ofSize: 17) // TODO: 変更する
+        targetLabel.textColor = UIColor.white
+        targetLabel.textAlignment = .center
         targetLabel.frame = CGRect(x: 0, y: offsetY, width: self.frame.width, height: 40)
         scrollView.addSubview(targetLabel)
     }
     
-    func createLineChart(lineChartView: LineChartView, emoteAt: NSDate) {
+    func createLineChart(lineChartView: LineChartView, emoteAt: Date) {
         lineChartView.rightAxis.drawLabelsEnabled = false
         lineChartView.drawGridBackgroundEnabled = false
         lineChartView.xAxis.drawLabelsEnabled = true
-        lineChartView.xAxis.labelPosition = .Bottom
-        lineChartView.xAxis.gridColor = UIColor.whiteColor()
+        lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.xAxis.gridColor = UIColor.white
         lineChartView.xAxis.gridLineWidth = 2
-        lineChartView.xAxis.labelFont = UIFont.boldSystemFontOfSize(10)
-        lineChartView.xAxis.labelTextColor = UIColor.whiteColor()
-        lineChartView.leftAxis.gridColor = UIColor.whiteColor()
+        lineChartView.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 10)
+        lineChartView.xAxis.labelTextColor = UIColor.white
+        lineChartView.leftAxis.gridColor = UIColor.white
         lineChartView.leftAxis.gridLineWidth = 2
-        lineChartView.leftAxis.labelFont = UIFont.boldSystemFontOfSize(10)
-        lineChartView.leftAxis.labelTextColor = UIColor.whiteColor()
-        lineChartView.descriptionTextColor = UIColor.whiteColor()
-        lineChartView.descriptionFont = UIFont.boldSystemFontOfSize(10)
+        lineChartView.leftAxis.labelFont = UIFont.boldSystemFont(ofSize: 10)
+        lineChartView.leftAxis.labelTextColor = UIColor.white
+        lineChartView.descriptionTextColor = UIColor.white
+        lineChartView.descriptionFont = UIFont.boldSystemFont(ofSize: 10)
         lineChartView.descriptionText = "(時)"
         
         var emotionValues: [ChartDataEntry] = []
@@ -73,7 +73,7 @@ extension ChartCollectionViewCell {
             emotionValues.append(ChartDataEntry(x: Double(i), y: 0))
         }
         
-        let emotions = EmotionDataStore.emotionsWithDate(emoteAt)
+        let emotions = EmotionDataStore.emotionsWithDate(targetDate: emoteAt)
         for emotion in emotions {
             switch emotion.emotion {
             case Emotion.Happy.rawValue:

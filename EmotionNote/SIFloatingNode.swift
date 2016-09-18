@@ -57,14 +57,14 @@ public class SIFloatingNode: SKShapeNode {
             actionKey = SIFloatingNode.commitKey
         }
         
-        if let a = action, ak = actionKey {
-            runAction(a, withKey: ak)
+        if let a = action, let ak = actionKey {
+            run(a, withKey: ak)
         }
     }
     
     override public func removeFromParent() {
         if let action = removeAnimation() {
-            runAction(action, completion: { () -> Void in
+            run(action, completion: { () -> Void in
                 super.removeFromParent()
             })
         } else {

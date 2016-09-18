@@ -23,7 +23,7 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        skView = SKView(frame: UIScreen.mainScreen().bounds)
+        skView = SKView(frame: UIScreen.main.bounds)
         view.addSubview(skView)
         
         floatingCollectionScene = BubblesScene(size: skView.bounds.size)
@@ -39,12 +39,12 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
     }
     
     func bindModel() {
-        presenter.rx_emotions.asObservable().subscribeNext { [weak self] emotions in
+        presenter.rx_emotions.asObservable().subscribe(onNext: { [weak self] emotions in
             for emotion in emotions {
-                let node = BubbleNode.instantiate(emotion)
-                self?.floatingCollectionScene.addChild(node)
+                let node = BubbleNode.instantiate(emotion: emotion)
+                self?.floatingCollectionScene.addChild(node!)
             }
-        }.addDisposableTo(disposeBag)
+        },onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
     }
 
     // MARK: SIFloatingCollectionSceneDelegate
@@ -59,7 +59,7 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
                     bubble.removeNormalNode() { [weak self] in
                         removedCompletedCount += 1
                         if removedCompletedCount == scene.floatingNodes.count - 1 {
-                            self?.router?.nextScreen(self, transition: self)
+                            self?.router?.nextScreen(viewController: self, transition: self)
                         }
                     }
                 }

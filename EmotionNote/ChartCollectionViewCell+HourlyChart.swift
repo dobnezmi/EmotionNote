@@ -16,35 +16,35 @@ extension ChartCollectionViewCell {
         }
         
         captionLabel1st = UILabel()
-        createCaptionLabel(captionLabel1st, caption: "嬉しい時間帯", offsetY: 44)
+        createCaptionLabel(targetLabel: captionLabel1st, caption: "嬉しい時間帯", offsetY: 44)
         var posY = captionLabel1st.frame.origin.y + captionLabel1st.frame.height + 8
         hourlyBarChartHappy = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(hourlyBarChartHappy, emotion: .Happy)
+        createHourlyBarChart(barChartView: hourlyBarChartHappy, emotion: .Happy)
         
         posY = hourlyBarChartHappy.frame.origin.y + hourlyBarChartHappy.frame.height + 16
         captionLabel2nd = UILabel()
-        createCaptionLabel(captionLabel2nd, caption: "楽しい時間帯", offsetY: posY)
+        createCaptionLabel(targetLabel: captionLabel2nd, caption: "楽しい時間帯", offsetY: posY)
         posY = captionLabel2nd.frame.origin.y + captionLabel2nd.frame.height + 8
         hourlyBarChartEnjoy = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(hourlyBarChartEnjoy, emotion: .Enjoy)
+        createHourlyBarChart(barChartView: hourlyBarChartEnjoy, emotion: .Enjoy)
         
         posY = hourlyBarChartEnjoy.frame.origin.y + hourlyBarChartEnjoy.frame.height + 16
         captionLabel3rd = UILabel()
-        createCaptionLabel(captionLabel3rd, caption: "悲しい時間帯", offsetY: posY)
+        createCaptionLabel(targetLabel: captionLabel3rd, caption: "悲しい時間帯", offsetY: posY)
         posY = captionLabel3rd.frame.origin.y + captionLabel3rd.frame.height + 8
         hourlyBarChartSad = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(hourlyBarChartSad, emotion: .Sad)
+        createHourlyBarChart(barChartView: hourlyBarChartSad, emotion: .Sad)
         
         posY = hourlyBarChartSad.frame.origin.y + hourlyBarChartSad.frame.height + 16
         captionLabel4th = UILabel()
-        createCaptionLabel(captionLabel4th, caption: "イライラする時間帯", offsetY: posY)
+        createCaptionLabel(targetLabel: captionLabel4th, caption: "イライラする時間帯", offsetY: posY)
         posY = captionLabel4th.frame.origin.y + captionLabel4th.frame.height + 8
         hourlyBarChartFrust = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(hourlyBarChartFrust, emotion: .Frustrated)
+        createHourlyBarChart(barChartView: hourlyBarChartFrust, emotion: .Frustrated)
         
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: posY + 250 + 16 + 100)
     }
@@ -53,20 +53,20 @@ extension ChartCollectionViewCell {
         barChartView.rightAxis.drawLabelsEnabled = false
         barChartView.drawGridBackgroundEnabled = false
         barChartView.xAxis.drawLabelsEnabled = true
-        barChartView.xAxis.labelPosition = .Bottom
-        barChartView.xAxis.gridColor = UIColor.whiteColor()
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.gridColor = UIColor.white
         barChartView.xAxis.gridLineWidth = 2
-        barChartView.xAxis.labelFont = UIFont.boldSystemFontOfSize(10)
-        barChartView.xAxis.labelTextColor = UIColor.whiteColor()
-        barChartView.leftAxis.gridColor = UIColor.whiteColor()
+        barChartView.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 10)
+        barChartView.xAxis.labelTextColor = UIColor.white
+        barChartView.leftAxis.gridColor = UIColor.white
         barChartView.leftAxis.gridLineWidth = 2
-        barChartView.leftAxis.labelFont = UIFont.boldSystemFontOfSize(10)
-        barChartView.leftAxis.labelTextColor = UIColor.whiteColor()
-        barChartView.descriptionTextColor = UIColor.whiteColor()
-        barChartView.descriptionFont = UIFont.boldSystemFontOfSize(10)
+        barChartView.leftAxis.labelFont = UIFont.boldSystemFont(ofSize: 10)
+        barChartView.leftAxis.labelTextColor = UIColor.white
+        barChartView.descriptionTextColor = UIColor.white
+        barChartView.descriptionFont = UIFont.boldSystemFont(ofSize: 10)
         barChartView.descriptionText = "(時)"
         
-        let emotions: [EmotionCount] = EmotionDataStore.emotionsWithPeriodPerHours(.All)
+        let emotions: [EmotionCount] = EmotionDataStore.emotionsWithPeriodPerHours(period: .All)
         var emotionValues: [BarChartDataEntry] = []
         for i in 0..<24 {
             var entry: BarChartDataEntry!
@@ -87,7 +87,7 @@ extension ChartCollectionViewCell {
         let chartData = BarChartData()
         let dataSet = BarChartDataSet(values: emotionValues, label: "時間帯別「\(emotion.toString())」")
         //dataSet.colors = ChartColorTemplates.material()
-        dataSet.colors = [NSUIColor.darkGrayColor()]
+        dataSet.colors = [NSUIColor.darkGray]
         chartData.addDataSet(dataSet)
         
         barChartView.data = chartData

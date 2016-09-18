@@ -77,7 +77,7 @@ enum Emotion: Int {
 
 class EmotionEntity: Object {
 
-    dynamic var emoteAt: NSDate = NSDate(timeIntervalSince1970: 1)
+    dynamic var emoteAt: Date = Date(timeIntervalSince1970: 1)
     dynamic var weekday: Int = SSWeekday.Sunday.rawValue
     dynamic var hour: Int = 0
     dynamic var emotion: Int = Emotion.Happy.rawValue

@@ -1,7 +1,7 @@
-github "ReactiveX/RxSwift" ~> 2.0
+github "ReactiveX/RxSwift" "3.0.0-beta.1"
 github "Quick/Quick" ~> 0.9
 github "Quick/Nimble" ~> 4.1
-github "realm/realm-cocoa"
-github "andreamazz/AMScrollingNavbar"
-github "Swinject/Swinject" ~> 1.1.4
+#github "realm/realm-cocoa"
+github "Swinject/Swinject" "2.0.0-beta.2"
+github "Swinject/SwinjectStoryboard" "1.0.0-beta.2"
 

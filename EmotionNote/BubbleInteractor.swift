@@ -14,6 +14,6 @@ protocol BubbleInteractor: class {
 
 final class BubbleInteractorImpl: BubbleInteractor {
     func storeEmotion(emotion: Emotion) {
-        EmotionDataStore.storeEmotion(emotion)
+        EmotionDataStore.storeEmotion(emotion: emotion)
     }
 }

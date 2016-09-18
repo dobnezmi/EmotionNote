@@ -49,7 +49,7 @@ class ChartCollectionViewCell: UICollectionViewCell {
     }
 
     class func nib() -> UINib {
-        return UINib(nibName: NSStringFromClass(self).componentsSeparatedByString(".").last!,
-                     bundle: NSBundle(forClass: self))
+        return UINib(nibName: NSStringFromClass(self).components(separatedBy: ".").last!,
+                     bundle: Bundle(for: self))
     }
 }
