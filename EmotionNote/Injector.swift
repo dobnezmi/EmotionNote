@@ -38,4 +38,19 @@ final class Injector {
             MentalStatisticsPresenterImpl()
         }
     }
+    
+    class func setupTest() {
+        Injector.container.register(MentalIndexChartPresenter.self) { _ in
+            MentalIndexChartPresenterImpl()
+        }
+        Injector.container.register(HourlyChartPresenter.self) { _ in
+            HourlyChartPresenterImpl()
+        }
+        Injector.container.register(MentalStatisticsPresenter.self) { _ in
+            MentalStatisticsPresenterImpl()
+        }
+        Injector.container.register(BubbleViewPresenter.self) { _ in
+            BubbleViewPresenterImpl()
+        }
+    }
 }

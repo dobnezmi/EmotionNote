@@ -89,7 +89,7 @@ final class EmotionDataStoreRealm: EmotionDataStore {
             
             var resultsWeekday: [EmotionCount] = []
             // 0で初期化
-            for _ in 0...7 {
+            for _ in 0...6 {
                 resultsWeekday.append(EmotionCount())
             }
             
@@ -101,16 +101,17 @@ final class EmotionDataStoreRealm: EmotionDataStore {
             }
             
             if let results = queryResult {
-                _ = results.map { model in
-                    switch(model.emotion) {
+                
+                for result in results {
+                    switch(result.emotion) {
                     case Emotion.Happy.rawValue:
-                        resultsWeekday[model.weekday].happyCount += 1
+                        resultsWeekday[result.weekday].happyCount += 1
                     case Emotion.Enjoy.rawValue:
-                        resultsWeekday[model.weekday].enjoyCount += 1
+                        resultsWeekday[result.weekday].enjoyCount += 1
                     case Emotion.Sad.rawValue:
-                        resultsWeekday[model.weekday].sadCount += 1
+                        resultsWeekday[result.weekday].sadCount += 1
                     case Emotion.Frustrated.rawValue:
-                        resultsWeekday[model.weekday].frustCount += 1
+                        resultsWeekday[result.weekday].frustCount += 1
                     default:
                         break
                     }

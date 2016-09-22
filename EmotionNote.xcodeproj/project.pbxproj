@@ -12,6 +12,15 @@
 		601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */; };
 		602CD38B1D4F9CB700ED90A6 /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CD3891D4F9CB700ED90A6 /* BubbleNode.swift */; };
 		602CD38C1D4F9CB700ED90A6 /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CD38A1D4F9CB700ED90A6 /* BubblesScene.swift */; };
+		6033FCA91D93C60700862F51 /* BubbleTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033FCA81D93C60700862F51 /* BubbleTestCase.swift */; };
+		6033FCAF1D93CC6C00862F51 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60800A591D8CD87D00BBFD92 /* Realm.framework */; };
+		6033FCB01D93CC6F00862F51 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60800A5A1D8CD87D00BBFD92 /* RealmSwift.framework */; };
+		6033FCB11D93CC8A00862F51 /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6033FCB21D93CC8A00862F51 /* SwinjectStoryboard.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6033FCB31D93CC8A00862F51 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480C1D4E413600D0D380 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6033FCB41D93CC8A00862F51 /* RxCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480D1D4E413600D0D380 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6033FCB51D93CC8A00862F51 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480E1D4E413600D0D380 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6033FCB71D93CD7A00862F51 /* ChartTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033FCB61D93CD7A00862F51 /* ChartTestCase.swift */; };
 		60345D481D5221EE00F10991 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480C1D4E413600D0D380 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60345D491D5221EE00F10991 /* RxCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480D1D4E413600D0D380 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60345D4A1D5221EE00F10991 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480E1D4E413600D0D380 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -221,6 +230,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6033FCB11D93CC8A00862F51 /* Swinject.framework in CopyFiles */,
+				6033FCB21D93CC8A00862F51 /* SwinjectStoryboard.framework in CopyFiles */,
+				6033FCB31D93CC8A00862F51 /* RxBlocking.framework in CopyFiles */,
+				6033FCB41D93CC8A00862F51 /* RxCocoa.framework in CopyFiles */,
+				6033FCB51D93CC8A00862F51 /* RxSwift.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +263,8 @@
 		601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
 		602CD3891D4F9CB700ED90A6 /* BubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
 		602CD38A1D4F9CB700ED90A6 /* BubblesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
+		6033FCA81D93C60700862F51 /* BubbleTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTestCase.swift; sourceTree = "<group>"; };
+		6033FCB61D93CD7A00862F51 /* ChartTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTestCase.swift; sourceTree = "<group>"; };
 		60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		60392B4F1D8D81D4005CBCFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		60392B551D8D8FE6005CBCFD /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -443,6 +459,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6033FCB01D93CC6F00862F51 /* RealmSwift.framework in Frameworks */,
+				6033FCAF1D93CC6C00862F51 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +832,8 @@
 			isa = PBXGroup;
 			children = (
 				6063A1C91D4E246900136C1F /* Info.plist */,
+				6033FCA81D93C60700862F51 /* BubbleTestCase.swift */,
+				6033FCB61D93CD7A00862F51 /* ChartTestCase.swift */,
 			);
 			path = EmotionNoteTests;
 			sourceTree = "<group>";
@@ -1217,6 +1237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6033FCB71D93CD7A00862F51 /* ChartTestCase.swift in Sources */,
+				6033FCA91D93C60700862F51 /* BubbleTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,16 +1423,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/EmotionNoteTests",
+					"$(PROJECT_DIR)/EmotionNote",
 				);
 				INFOPLIST_FILE = EmotionNoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dobnezmi.EmotionNoteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmotionNote.app/EmotionNote";
 			};
@@ -1420,11 +1445,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/EmotionNoteTests",
+					"$(PROJECT_DIR)/EmotionNote",
 				);
 				INFOPLIST_FILE = EmotionNoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
