@@ -60,7 +60,7 @@ extension ChartCollectionViewCell {
     
     func createHourlyBarChart(barChartView: BarChartView, emotion: Emotion, emotionCount: Variable<[Int]>) {
         barChartView.rightAxis.drawLabelsEnabled = false
-        barChartView.drawGridBackgroundEnabled = false
+//        barChartView.drawGridBackgroundEnabled = true
         barChartView.xAxis.drawLabelsEnabled = true
         barChartView.xAxis.labelPosition = .bottom
         barChartView.xAxis.gridColor = UIColor.white
@@ -85,7 +85,7 @@ extension ChartCollectionViewCell {
             
             let chartData = BarChartData()
             let dataSet = BarChartDataSet(values: emotionValues, label: "時間帯別「\(emotion.toString())」")
-            dataSet.colors = [NSUIColor(red: 192/255.0, green: 255/255.0, blue: 140/255.0, alpha: 1.0)]
+            dataSet.colors = [NSUIColor(red: 245/255.0, green: 199/255.0, blue: 0/255.0, alpha: 1.0)]
             chartData.addDataSet(dataSet)
             
             barChartView.data = chartData
