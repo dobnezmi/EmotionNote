@@ -10,42 +10,23 @@ import Foundation
 import RealmSwift
 import RxSwift
 
-final class EmotionDataStoreRealm {
-    
-    static private var _realm: Realm?
-    static private var realm: Realm? {
-        if _realm == nil {
-            _realm = try? Realm()
-        }
-        return _realm
+final class EmotionDataStoreRealm: EmotionDataStore {
+    static private var _instance: EmotionDataStoreRealm = EmotionDataStoreRealm()
+    static var sharedInstance: EmotionDataStore {
+        return _instance
     }
-    
-    //タイムスタンプ、曜日、時間、感情
-    //（時間と感情のプロット、１日単位）、（時間と感情の統計、今週、１ヶ月、累計）、（感情の統計、円の大きさ、今週、１ヶ月、累計）
+    var realm: Realm? = try? Realm()
     
     // MARK: -- Fetch
-    
     // 指定日付のエモーションデータ取得
-    class func emotionsWithDate(targetDate: Date) -> [EmotionEntity] {
-        let stDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
-        let edDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
-        
-        var emotes: [EmotionEntity] = []
-        if let results = realm?.objects(EmotionEntity.self).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
-            for result in results {
-                emotes.append(result)
-            }
-        }
-        return emotes
-    }
-    
-    class func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]> {
-        return Observable.create { observer in
+    func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]> {
+        return Observable.create { [weak self] observer in
             let stDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
             let edDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
             
             var emotes: [EmotionEntity] = []
-            if let results = realm?.objects(EmotionEntity.self).filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
+            if let results = self?.realm?.objects(EmotionEntity.self)
+                                .filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
                 for result in results {
                     emotes.append(result)
                 }
@@ -57,42 +38,12 @@ final class EmotionDataStoreRealm {
     }
     
     // 指定期間の時間帯別エモーションデータ取得
-    class func emotionsWithPeriodPerHours(period: EmotionPeriod) -> [EmotionCount] {
-        var resultsPerHour: [EmotionCount] = []
-        // 24時間分0で初期化
-        for _ in 0...23 {
-            resultsPerHour.append(EmotionCount())
-        }
-        
-        var queryResult: Results<EmotionEntity>?
-        if let filterStr = filterStringWithPeriod(period: period) {
-            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
-        } else {
-            queryResult = realm?.objects(EmotionEntity.self)
-        }
-        
-        if let results = queryResult {
-            for result in results {
-                switch result.emotion {
-                case Emotion.Happy.rawValue:
-                    resultsPerHour[result.hour].happyCount += 1
-                case Emotion.Enjoy.rawValue:
-                    resultsPerHour[result.hour].enjoyCount += 1
-                case Emotion.Sad.rawValue:
-                    resultsPerHour[result.hour].sadCount += 1
-                case Emotion.Frustrated.rawValue:
-                    resultsPerHour[result.hour].frustCount += 1
-                default:
-                    break
-                }
+    func rx_emotionsWithPeriodPerHours(period: EmotionPeriod) -> Observable<[EmotionCount]> {
+        return Observable.create { [weak self] observer in
+            guard let s = self else {
+                return Disposables.create()
             }
-        }
-        
-        return resultsPerHour
-    }
-    
-    class func rx_emotionsWithPeriodPerHours(period: EmotionPeriod) -> Observable<[EmotionCount]> {
-        return Observable.create { observer in
+            
             var resultsPerHour: [EmotionCount] = []
             // 24時間分0で初期化
             for _ in 0...23 {
@@ -100,23 +51,23 @@ final class EmotionDataStoreRealm {
             }
             
             var queryResult: Results<EmotionEntity>?
-            if let filterStr = filterStringWithPeriod(period: period) {
-                queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
+            if let filterStr = s.filterStringWithPeriod(period: period) {
+                queryResult = s.realm?.objects(EmotionEntity.self).filter(filterStr)
             } else {
-                queryResult = realm?.objects(EmotionEntity.self)
+                queryResult = s.realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
-                _ = results.map { model in
-                    switch(model.emotion) {
+                for result in results {
+                    switch(result.emotion) {
                     case Emotion.Happy.rawValue:
-                        resultsPerHour[model.hour].happyCount += 1
+                        resultsPerHour[result.hour].happyCount += 1
                     case Emotion.Enjoy.rawValue:
-                        resultsPerHour[model.hour].enjoyCount += 1
+                        resultsPerHour[result.hour].enjoyCount += 1
                     case Emotion.Sad.rawValue:
-                        resultsPerHour[model.hour].sadCount += 1
+                        resultsPerHour[result.hour].sadCount += 1
                     case Emotion.Frustrated.rawValue:
-                        resultsPerHour[model.hour].frustCount += 1
+                        resultsPerHour[result.hour].frustCount += 1
                     default:
                         break
                     }
@@ -130,42 +81,11 @@ final class EmotionDataStoreRealm {
     }
     
     // 曜日別エモーションデータ取得
-    class func emotionWithWeek(period: EmotionPeriod) -> [EmotionCount] {
-        var resultsWeekday: [EmotionCount] = []
-        // 0で初期化
-        for _ in 0...7 {
-            resultsWeekday.append(EmotionCount())
-        }
-        
-        var queryResult: Results<EmotionEntity>?
-        if let filterStr = filterStringWithPeriod(period: period) {
-            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
-        } else {
-            queryResult = realm?.objects(EmotionEntity.self)
-        }
-        
-        if let results = queryResult {
-            _ = results.map { model in
-                switch(model.emotion) {
-                case Emotion.Happy.rawValue:
-                    resultsWeekday[model.weekday].happyCount += 1
-                case Emotion.Enjoy.rawValue:
-                    resultsWeekday[model.weekday].enjoyCount += 1
-                case Emotion.Sad.rawValue:
-                    resultsWeekday[model.weekday].sadCount += 1
-                case Emotion.Frustrated.rawValue:
-                    resultsWeekday[model.weekday].frustCount += 1
-                default:
-                    break
-                }
+    func rx_emotionsWithWeek(period: EmotionPeriod) -> Observable<[EmotionCount]> {
+        return Observable.create { [weak self] observer in
+            guard let s = self else {
+                return Disposables.create()
             }
-        }
-        
-        return resultsWeekday
-    }
-    
-    class func rx_emotionsWithWeek(period: EmotionPeriod) -> Observable<[EmotionCount]> {
-        return Observable.create { observer in
             
             var resultsWeekday: [EmotionCount] = []
             // 0で初期化
@@ -174,10 +94,10 @@ final class EmotionDataStoreRealm {
             }
             
             var queryResult: Results<EmotionEntity>?
-            if let filterStr = filterStringWithPeriod(period: period) {
-                queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
+            if let filterStr = s.filterStringWithPeriod(period: period) {
+                queryResult = s.realm?.objects(EmotionEntity.self).filter(filterStr)
             } else {
-                queryResult = realm?.objects(EmotionEntity.self)
+                queryResult = s.realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
@@ -203,46 +123,18 @@ final class EmotionDataStoreRealm {
     }
     
     // 指定期間のエモーションデータ取得
-    class func emotionsWithPeriod(period: EmotionPeriod) -> (EmotionCount) {
-        var queryResult: Results<EmotionEntity>?
-        
-        if let predicate = filterStringWithPeriod(period: period) {
-            queryResult = realm?.objects(EmotionEntity.self).filter(predicate)
-        } else {
-            queryResult = realm?.objects(EmotionEntity.self)
-        }
-        
-        if let results = queryResult {
-            let emoteCount = results.reduce(EmotionCount(),
-                                            { count, result in
-                                                
-                                                switch(result.emotion) {
-                                                case Emotion.Happy.rawValue:
-                                                    return count.addHappy()
-                                                case Emotion.Enjoy.rawValue:
-                                                    return count.addEnjoy()
-                                                case Emotion.Sad.rawValue:
-                                                    return count.addSad()
-                                                case Emotion.Frustrated.rawValue:
-                                                    return count.addFrustrate()
-                                                default:
-                                                    return count
-                                                }
-            })
-            return emoteCount
-        }
-        return EmotionCount()
-    }
-    
-    class func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
-        return Observable.create { observer in
+    func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
+        return Observable.create { [weak self] observer in
+            guard let s = self else {
+                return Disposables.create()
+            }
             
             var queryResult: Results<EmotionEntity>?
             
-            if let predicate = filterStringWithPeriod(period: period) {
-                queryResult = realm?.objects(EmotionEntity.self).filter(predicate)
+            if let predicate = s.filterStringWithPeriod(period: period) {
+                queryResult = s.realm?.objects(EmotionEntity.self).filter(predicate)
             } else {
-                queryResult = realm?.objects(EmotionEntity.self)
+                queryResult = s.realm?.objects(EmotionEntity.self)
             }
             
             if let results = queryResult {
@@ -269,7 +161,7 @@ final class EmotionDataStoreRealm {
         }
     }
     
-    private class func filterStringWithPeriod(period: EmotionPeriod) -> NSPredicate? {
+    private func filterStringWithPeriod(period: EmotionPeriod) -> NSPredicate? {
         let today = Date()
         
         switch(period) {
@@ -286,7 +178,7 @@ final class EmotionDataStoreRealm {
     
     // MARK: -- Store/Update
     // エモーション保存
-    class func storeEmotion(emotion: Emotion) {
+    func storeEmotion(emotion: Emotion) {
         let emoteObject = EmotionEntity()
         emoteObject.emoteAt = Date()
         emoteObject.emotion = emotion.rawValue
@@ -299,7 +191,7 @@ final class EmotionDataStoreRealm {
     }
     
     // MARK: -- Delete
-    class func clearAll() {
+    func clearAll() {
         try! realm?.write {
             realm?.deleteAll()
         }

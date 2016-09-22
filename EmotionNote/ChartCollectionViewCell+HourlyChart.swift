@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 extension ChartCollectionViewCell {
     // TODO: 時間帯ごとの感情集計グラフ描画
@@ -20,7 +21,9 @@ extension ChartCollectionViewCell {
         var posY = captionLabel1st.frame.origin.y + captionLabel1st.frame.height + 8
         hourlyBarChartHappy = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(barChartView: hourlyBarChartHappy, emotion: .Happy)
+        createHourlyBarChart(barChartView: hourlyBarChartHappy,
+                             emotion: .Happy,
+                             emotionCount: hourlyChartPresenter.rx_happyEmotion)
         
         posY = hourlyBarChartHappy.frame.origin.y + hourlyBarChartHappy.frame.height + 16
         captionLabel2nd = UILabel()
@@ -28,7 +31,9 @@ extension ChartCollectionViewCell {
         posY = captionLabel2nd.frame.origin.y + captionLabel2nd.frame.height + 8
         hourlyBarChartEnjoy = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(barChartView: hourlyBarChartEnjoy, emotion: .Enjoy)
+        createHourlyBarChart(barChartView: hourlyBarChartEnjoy,
+                             emotion: .Enjoy,
+                             emotionCount: hourlyChartPresenter.rx_enjoyEmotin)
         
         posY = hourlyBarChartEnjoy.frame.origin.y + hourlyBarChartEnjoy.frame.height + 16
         captionLabel3rd = UILabel()
@@ -36,7 +41,9 @@ extension ChartCollectionViewCell {
         posY = captionLabel3rd.frame.origin.y + captionLabel3rd.frame.height + 8
         hourlyBarChartSad = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(barChartView: hourlyBarChartSad, emotion: .Sad)
+        createHourlyBarChart(barChartView: hourlyBarChartSad,
+                             emotion: .Sad,
+                             emotionCount: hourlyChartPresenter.rx_sadEmotion)
         
         posY = hourlyBarChartSad.frame.origin.y + hourlyBarChartSad.frame.height + 16
         captionLabel4th = UILabel()
@@ -44,12 +51,14 @@ extension ChartCollectionViewCell {
         posY = captionLabel4th.frame.origin.y + captionLabel4th.frame.height + 8
         hourlyBarChartFrust = BarChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createHourlyBarChart(barChartView: hourlyBarChartFrust, emotion: .Frustrated)
+        createHourlyBarChart(barChartView: hourlyBarChartFrust,
+                             emotion: .Frustrated,
+                             emotionCount: hourlyChartPresenter.rx_frustEmotion)
         
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: posY + 250 + 16 + 100)
     }
     
-    func createHourlyBarChart(barChartView: BarChartView, emotion: Emotion) {
+    func createHourlyBarChart(barChartView: BarChartView, emotion: Emotion, emotionCount: Variable<[Int]>) {
         barChartView.rightAxis.drawLabelsEnabled = false
         barChartView.drawGridBackgroundEnabled = false
         barChartView.xAxis.drawLabelsEnabled = true
@@ -66,32 +75,24 @@ extension ChartCollectionViewCell {
         barChartView.descriptionFont = UIFont.boldSystemFont(ofSize: 10)
         barChartView.descriptionText = "(時)"
         
-        let emotions: [EmotionCount] = EmotionDataStore.emotionsWithPeriodPerHours(period: .All)
-        var emotionValues: [BarChartDataEntry] = []
-        for i in 0..<24 {
-            var entry: BarChartDataEntry!
-            switch emotion {
-            case .Happy:
-                entry = BarChartDataEntry(x: Double(i), y: Double(emotions[i].happyCount))
-            case .Enjoy:
-                entry = BarChartDataEntry(x: Double(i), y: Double(emotions[i].enjoyCount))
-            case .Sad:
-                entry = BarChartDataEntry(x: Double(i), y: Double(emotions[i].sadCount))
-            case .Frustrated:
-                entry = BarChartDataEntry(x: Double(i), y: Double(emotions[i].frustCount))
+        emotionCount.asObservable().subscribe(onNext: { hourlyCounts in
+            var emotionValues: [BarChartDataEntry] = []
+            var i: Double = 0.0
+            for count in hourlyCounts {
+                emotionValues.append(BarChartDataEntry(x: i, y: Double(count)))
+                i += 1.0
             }
-            emotionValues.append(entry)
-        }
-        
-        
-        let chartData = BarChartData()
-        let dataSet = BarChartDataSet(values: emotionValues, label: "時間帯別「\(emotion.toString())」")
-        //dataSet.colors = ChartColorTemplates.material()
-        dataSet.colors = [NSUIColor.darkGray]
-        chartData.addDataSet(dataSet)
-        
-        barChartView.data = chartData
-        barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+            
+            let chartData = BarChartData()
+            let dataSet = BarChartDataSet(values: emotionValues, label: "時間帯別「\(emotion.toString())」")
+            dataSet.colors = [NSUIColor(red: 192/255.0, green: 255/255.0, blue: 140/255.0, alpha: 1.0)]
+            chartData.addDataSet(dataSet)
+            
+            barChartView.data = chartData
+            barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+            
+        }).addDisposableTo(disposeBag)
         scrollView.addSubview(barChartView)
+        
     }
 }

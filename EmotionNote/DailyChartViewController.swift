@@ -40,7 +40,7 @@ class DailyChartViewController: UIViewController, UICollectionViewDataSource, UI
         switch(indexPath.item) {
         case 0:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
-            cell.showDailyEmotionalChart()
+            cell.showMentalIndexChart()
         case 1:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
             cell.showHourlyEmoteChart()

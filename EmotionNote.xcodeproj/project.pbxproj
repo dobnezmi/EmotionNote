@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60083AE61D5E223400F24BB2 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F245A51D5D88F600676285 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		60083AE71D5E223400F24BB2 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60F245A61D5D88F600676285 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		600858691D88528000FD224B /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600858681D88528000FD224B /* Swinject.framework */; };
-		6008586B1D88529D00FD224B /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 600858681D88528000FD224B /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		601C61B41D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */; };
 		601DF6C51D5CBB24009BC193 /* DailyChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */; };
 		601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */; };
@@ -21,8 +17,6 @@
 		60345D4A1D5221EE00F10991 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60FD480E1D4E413600D0D380 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60392A281D8D6BE5005CBCFD /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60800A591D8CD87D00BBFD92 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60392A291D8D6BE5005CBCFD /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60800A5A1D8CD87D00BBFD92 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		60392A2B1D8D6EDA005CBCFD /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60392A2A1D8D6EDA005CBCFD /* Swinject.framework */; };
-		60392A2C1D8D6EE2005CBCFD /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60392A2A1D8D6EDA005CBCFD /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60392A2E1D8D72E4005CBCFD /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */; };
 		60392A2F1D8D72EF005CBCFD /* SwinjectStoryboard.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60392B521D8D81E5005CBCFD /* QuartzCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60392B4F1D8D81D4005CBCFD /* QuartzCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -170,19 +164,24 @@
 		6082BD701D6823C000EAE220 /* BubbleViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6082BD6F1D6823C000EAE220 /* BubbleViewPresenter.swift */; };
 		6082BD771D6858F900EAE220 /* ChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6082BD751D6858F900EAE220 /* ChartCollectionViewCell.swift */; };
 		6082BD781D6858F900EAE220 /* ChartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6082BD761D6858F900EAE220 /* ChartCollectionViewCell.xib */; };
-		60A050801D79D313009E2B47 /* ChartCollectionViewCell+DailyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+DailyChart.swift */; };
+		60899E181D901BFA00C84221 /* HourlyChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */; };
+		60899E1A1D901CBB00C84221 /* HourlyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */; };
+		60899E1C1D90275000C84221 /* MentalStatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */; };
+		60899E1E1D90283300C84221 /* MentalStatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E1D1D90283300C84221 /* MentalStatisticsPresenter.swift */; };
+		60A050801D79D313009E2B47 /* ChartCollectionViewCell+MentalIndexChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+MentalIndexChart.swift */; };
 		60A050821D79D792009E2B47 /* ChartCollectionViewCell+HourlyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A050811D79D792009E2B47 /* ChartCollectionViewCell+HourlyChart.swift */; };
 		60A050841D79D7C5009E2B47 /* ChartCollectionViewCell+Weekly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A050831D79D7C5009E2B47 /* ChartCollectionViewCell+Weekly.swift */; };
 		60B19FE11D8D03EF004E5E1C /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19FE01D8D03EF004E5E1C /* Date+Util.swift */; };
 		60BB7D6D1D5D8F610088745F /* EmotionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB7D6C1D5D8F610088745F /* EmotionEntity.swift */; };
 		60BB7D6F1D5D92C50088745F /* EmotionDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB7D6E1D5D92C50088745F /* EmotionDataStore.swift */; };
 		60C5F9CB1D8E596A00D858C5 /* EmotionDataStoreRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9CA1D8E596A00D858C5 /* EmotionDataStoreRealm.swift */; };
+		60C5F9CD1D8E7D8900D858C5 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; };
+		60C5F9CE1D8E7D9700D858C5 /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60C5F9D31D8E831300D858C5 /* MentalIndexChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */; };
+		60C5F9D51D8E848100D858C5 /* MentalIndexChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */; };
 		60ECC36A1D8ADC78003EB1C6 /* BubbleViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC3691D8ADC78003EB1C6 /* BubbleViewRouter.swift */; };
 		60ECC36D1D8AE516003EB1C6 /* BubbleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC36C1D8AE516003EB1C6 /* BubbleInteractor.swift */; };
 		60ECC36F1D8AE6B7003EB1C6 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC36E1D8AE6B7003EB1C6 /* Injector.swift */; };
-		60F245A71D5D88F600676285 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F245A51D5D88F600676285 /* Nimble.framework */; };
-		60F245A81D5D88F600676285 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F245A61D5D88F600676285 /* Quick.framework */; };
-		60F245AA1D5D891700676285 /* EmotionEntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F245A91D5D891700676285 /* EmotionEntityTest.swift */; };
 		60FD48051D4E410D00D0D380 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD48031D4E410D00D0D380 /* SIFloatingCollectionScene.swift */; };
 		60FD48061D4E410D00D0D380 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD48041D4E410D00D0D380 /* SIFloatingNode.swift */; };
 		60FD48151D4E413600D0D380 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FD480C1D4E413600D0D380 /* RxBlocking.framework */; };
@@ -222,9 +221,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6008586B1D88529D00FD224B /* Swinject.framework in CopyFiles */,
-				60083AE61D5E223400F24BB2 /* Nimble.framework in CopyFiles */,
-				60083AE71D5E223400F24BB2 /* Quick.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,9 +230,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				60C5F9CE1D8E7D9700D858C5 /* Swinject.framework in CopyFiles */,
 				60392B521D8D81E5005CBCFD /* QuartzCore.framework in CopyFiles */,
 				60392A2F1D8D72EF005CBCFD /* SwinjectStoryboard.framework in CopyFiles */,
-				60392A2C1D8D6EE2005CBCFD /* Swinject.framework in CopyFiles */,
 				60392A281D8D6BE5005CBCFD /* Realm.framework in CopyFiles */,
 				60392A291D8D6BE5005CBCFD /* RealmSwift.framework in CopyFiles */,
 				60345D481D5221EE00F10991 /* RxBlocking.framework in CopyFiles */,
@@ -248,13 +244,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		600858681D88528000FD224B /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = SOURCE_ROOT; };
 		601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+EmotionNote.swift"; sourceTree = "<group>"; };
 		601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartViewController.swift; sourceTree = "<group>"; };
 		601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
 		602CD3891D4F9CB700ED90A6 /* BubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
 		602CD38A1D4F9CB700ED90A6 /* BubblesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
-		60392A2A1D8D6EDA005CBCFD /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		60392B4F1D8D81D4005CBCFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		60392B551D8D8FE6005CBCFD /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -406,19 +400,23 @@
 		6082BD6F1D6823C000EAE220 /* BubbleViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewPresenter.swift; sourceTree = "<group>"; };
 		6082BD751D6858F900EAE220 /* ChartCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCollectionViewCell.swift; sourceTree = "<group>"; };
 		6082BD761D6858F900EAE220 /* ChartCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartCollectionViewCell.xib; sourceTree = "<group>"; };
-		60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+DailyChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartCollectionViewCell+DailyChart.swift"; sourceTree = "<group>"; };
+		60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyChartInteractor.swift; sourceTree = "<group>"; };
+		60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyChartPresenter.swift; sourceTree = "<group>"; };
+		60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalStatisticsInteractor.swift; sourceTree = "<group>"; };
+		60899E1D1D90283300C84221 /* MentalStatisticsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalStatisticsPresenter.swift; sourceTree = "<group>"; };
+		60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+MentalIndexChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartCollectionViewCell+MentalIndexChart.swift"; sourceTree = "<group>"; };
 		60A050811D79D792009E2B47 /* ChartCollectionViewCell+HourlyChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartCollectionViewCell+HourlyChart.swift"; sourceTree = "<group>"; };
 		60A050831D79D7C5009E2B47 /* ChartCollectionViewCell+Weekly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartCollectionViewCell+Weekly.swift"; sourceTree = "<group>"; };
 		60B19FE01D8D03EF004E5E1C /* Date+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
 		60BB7D6C1D5D8F610088745F /* EmotionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionEntity.swift; sourceTree = "<group>"; };
 		60BB7D6E1D5D92C50088745F /* EmotionDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataStore.swift; sourceTree = "<group>"; };
 		60C5F9CA1D8E596A00D858C5 /* EmotionDataStoreRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataStoreRealm.swift; sourceTree = "<group>"; };
+		60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+		60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalIndexChartPresenter.swift; sourceTree = "<group>"; };
+		60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalIndexChartInteractor.swift; sourceTree = "<group>"; };
 		60ECC3691D8ADC78003EB1C6 /* BubbleViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewRouter.swift; sourceTree = "<group>"; };
 		60ECC36C1D8AE516003EB1C6 /* BubbleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleInteractor.swift; sourceTree = "<group>"; };
 		60ECC36E1D8AE6B7003EB1C6 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
-		60F245A51D5D88F600676285 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
-		60F245A61D5D88F600676285 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
-		60F245A91D5D891700676285 /* EmotionEntityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionEntityTest.swift; sourceTree = "<group>"; };
 		60FD48031D4E410D00D0D380 /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
 		60FD48041D4E410D00D0D380 /* SIFloatingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIFloatingNode.swift; sourceTree = "<group>"; };
 		60FD480C1D4E413600D0D380 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
@@ -432,10 +430,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				60392C6B1D8D90FD005CBCFD /* QuartzCore.framework in Frameworks */,
+				60C5F9CD1D8E7D8900D858C5 /* Swinject.framework in Frameworks */,
 				60800A5C1D8CD87D00BBFD92 /* RealmSwift.framework in Frameworks */,
 				60FD48171D4E413600D0D380 /* RxSwift.framework in Frameworks */,
 				60392A2E1D8D72E4005CBCFD /* SwinjectStoryboard.framework in Frameworks */,
-				60392A2B1D8D6EDA005CBCFD /* Swinject.framework in Frameworks */,
 				60FD48151D4E413600D0D380 /* RxBlocking.framework in Frameworks */,
 				60800A5B1D8CD87D00BBFD92 /* Realm.framework in Frameworks */,
 			);
@@ -445,9 +443,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				600858691D88528000FD224B /* Swinject.framework in Frameworks */,
-				60F245A81D5D88F600676285 /* Quick.framework in Frameworks */,
-				60F245A71D5D88F600676285 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,9 +813,7 @@
 		6063A1C61D4E246900136C1F /* EmotionNoteTests */ = {
 			isa = PBXGroup;
 			children = (
-				60F245A41D5D87A900676285 /* Carthage */,
 				6063A1C91D4E246900136C1F /* Info.plist */,
-				60F245A91D5D891700676285 /* EmotionEntityTest.swift */,
 			);
 			path = EmotionNoteTests;
 			sourceTree = "<group>";
@@ -847,6 +840,9 @@
 			isa = PBXGroup;
 			children = (
 				6082BD6F1D6823C000EAE220 /* BubbleViewPresenter.swift */,
+				60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */,
+				60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */,
+				60899E1D1D90283300C84221 /* MentalStatisticsPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -856,7 +852,7 @@
 			children = (
 				6082BD751D6858F900EAE220 /* ChartCollectionViewCell.swift */,
 				6082BD761D6858F900EAE220 /* ChartCollectionViewCell.xib */,
-				60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+DailyChart.swift */,
+				60A0507F1D79D313009E2B47 /* ChartCollectionViewCell+MentalIndexChart.swift */,
 				60A050811D79D792009E2B47 /* ChartCollectionViewCell+HourlyChart.swift */,
 				60A050831D79D7C5009E2B47 /* ChartCollectionViewCell+Weekly.swift */,
 			);
@@ -883,25 +879,18 @@
 			isa = PBXGroup;
 			children = (
 				60ECC36C1D8AE516003EB1C6 /* BubbleInteractor.swift */,
+				60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */,
+				60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */,
+				60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */,
 			);
 			name = Interactor;
-			sourceTree = "<group>";
-		};
-		60F245A41D5D87A900676285 /* Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				600858681D88528000FD224B /* Swinject.framework */,
-				60F245A51D5D88F600676285 /* Nimble.framework */,
-				60F245A61D5D88F600676285 /* Quick.framework */,
-			);
-			name = Carthage;
 			sourceTree = "<group>";
 		};
 		60FD48011D4E40D000D0D380 /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */,
 				60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */,
-				60392A2A1D8D6EDA005CBCFD /* Swinject.framework */,
 				60FD480C1D4E413600D0D380 /* RxBlocking.framework */,
 				60FD480D1D4E413600D0D380 /* RxCocoa.framework */,
 				60FD480E1D4E413600D0D380 /* RxSwift.framework */,
@@ -1091,6 +1080,7 @@
 				60392C421D8D8FE6005CBCFD /* AnimatedZoomViewJob.swift in Sources */,
 				60B19FE11D8D03EF004E5E1C /* Date+Util.swift in Sources */,
 				60392C2A1D8D8FE6005CBCFD /* DefaultValueFormatter.swift in Sources */,
+				60C5F9D31D8E831300D858C5 /* MentalIndexChartPresenter.swift in Sources */,
 				60392C161D8D8FE6005CBCFD /* PieChartDataSet.swift in Sources */,
 				60392C101D8D8FE6005CBCFD /* LineChartData.swift in Sources */,
 				60392BF21D8D8FE6005CBCFD /* PieRadarChartViewBase.swift in Sources */,
@@ -1101,12 +1091,13 @@
 				60392C0A1D8D8FE6005CBCFD /* CandleChartDataSet.swift in Sources */,
 				601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */,
 				60392C481D8D8FE6005CBCFD /* BarLineScatterCandleBubbleRenderer.swift in Sources */,
-				60A050801D79D313009E2B47 /* ChartCollectionViewCell+DailyChart.swift in Sources */,
+				60A050801D79D313009E2B47 /* ChartCollectionViewCell+MentalIndexChart.swift in Sources */,
 				60392BF31D8D8FE6005CBCFD /* RadarChartView.swift in Sources */,
 				60392C5D1D8D8FE6005CBCFD /* ScatterChartRenderer.swift in Sources */,
 				60FD48061D4E410D00D0D380 /* SIFloatingNode.swift in Sources */,
 				60392C001D8D8FE6005CBCFD /* BarChartData.swift in Sources */,
 				60392C681D8D8FE6005CBCFD /* Transformer.swift in Sources */,
+				60C5F9D51D8E848100D858C5 /* MentalIndexChartInteractor.swift in Sources */,
 				60392C651D8D8FE6005CBCFD /* ChartUtils.swift in Sources */,
 				60392C1F1D8D8FE6005CBCFD /* ICandleChartDataSet.swift in Sources */,
 				60BB7D6D1D5D8F610088745F /* EmotionEntity.swift in Sources */,
@@ -1130,6 +1121,7 @@
 				60392C321D8D8FE6005CBCFD /* HorizontalBarHighlighter.swift in Sources */,
 				60392BF61D8D8FE6005CBCFD /* ChartLimitLine.swift in Sources */,
 				60392C2D1D8D8FE6005CBCFD /* IValueFormatter.swift in Sources */,
+				60899E1A1D901CBB00C84221 /* HourlyChartPresenter.swift in Sources */,
 				60392C521D8D8FE6005CBCFD /* PieChartRenderer.swift in Sources */,
 				60392C251D8D8FE6005CBCFD /* IRadarChartDataSet.swift in Sources */,
 				60392C5A1D8D8FE6005CBCFD /* SquareShapeRenderer.swift in Sources */,
@@ -1174,8 +1166,10 @@
 				60392C4D1D8D8FE6005CBCFD /* HorizontalBarChartRenderer.swift in Sources */,
 				60392BE81D8D8FE6005CBCFD /* ChartAnimationEasing.swift in Sources */,
 				60392BEE1D8D8FE6005CBCFD /* CombinedChartView.swift in Sources */,
+				60899E181D901BFA00C84221 /* HourlyChartInteractor.swift in Sources */,
 				60392C1D1D8D8FE6005CBCFD /* IBarLineScatterCandleBubbleChartDataSet.swift in Sources */,
 				60392BEA1D8D8FE6005CBCFD /* BarLineChartViewBase.swift in Sources */,
+				60899E1E1D90283300C84221 /* MentalStatisticsPresenter.swift in Sources */,
 				60392C011D8D8FE6005CBCFD /* BarChartDataEntry.swift in Sources */,
 				60392C171D8D8FE6005CBCFD /* RadarChartData.swift in Sources */,
 				60392C2E1D8D8FE6005CBCFD /* BarHighlighter.swift in Sources */,
@@ -1192,6 +1186,7 @@
 				60392BED1D8D8FE6005CBCFD /* ChartViewBase.swift in Sources */,
 				60A050841D79D7C5009E2B47 /* ChartCollectionViewCell+Weekly.swift in Sources */,
 				60392C431D8D8FE6005CBCFD /* MoveViewJob.swift in Sources */,
+				60899E1C1D90275000C84221 /* MentalStatisticsInteractor.swift in Sources */,
 				60392C131D8D8FE6005CBCFD /* LineScatterCandleRadarChartDataSet.swift in Sources */,
 				60392BF51D8D8FE6005CBCFD /* AxisBase.swift in Sources */,
 				60392BFA1D8D8FE6005CBCFD /* LegendEntry.swift in Sources */,
@@ -1222,7 +1217,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F245AA1D5D891700676285 /* EmotionEntityTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

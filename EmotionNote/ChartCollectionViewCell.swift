@@ -7,16 +7,23 @@
 //
 
 import UIKit
-//import Charts
+import RxSwift
 
 class ChartCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let disposeBag = DisposeBag()
+    
     // Cell ID
     static let DailyChartCellID = "DailyCell"
     static let HourlyChartCellID = "HourlyCell"
     static let PeriodicChartCellID = "PeriodicCell"
+
+    // Presenter
+    let mentalIndexPresenter: MentalIndexChartPresenter = Injector.container.resolve(MentalIndexChartPresenter.self)!
+    let hourlyChartPresenter: HourlyChartPresenter = Injector.container.resolve(HourlyChartPresenter.self)!
+    let statisticsPresenter: MentalStatisticsPresenter = Injector.container.resolve(MentalStatisticsPresenter.self)!
     
     // キャプションラベル
     var captionLabel1st: UILabel!
@@ -42,6 +49,8 @@ class ChartCollectionViewCell: UICollectionViewCell {
     
     let leftMargin: CGFloat = 10
     let rightMargin: CGFloat = 20
+    
+    let dataStore: EmotionDataStore = Injector.container.resolve(EmotionDataStore.self)!
 
     override func awakeFromNib() {
         super.awakeFromNib()

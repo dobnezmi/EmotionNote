@@ -21,7 +21,11 @@ extension ChartCollectionViewCell {
         var posY = captionLabel1st.frame.origin.y + captionLabel1st.frame.height + 8
         pieChartViewWeek = PieChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createPiechart(pieChart: pieChartViewWeek, emotionCount: EmotionDataStore.emotionsWithPeriod(period: .Week))
+        statisticsPresenter.rx_weeklyEmotion.asObservable().subscribe(onNext: { [weak self] emotionCount in
+            if let count = emotionCount {
+                self?.createPiechart(pieChart: self?.pieChartViewWeek, emotionCount: count)
+            }
+        }).addDisposableTo(disposeBag)
         pieChartViewWeek.descriptionText = ""
         
         posY = pieChartViewWeek.frame.origin.y + pieChartViewWeek.frame.height + 16
@@ -30,7 +34,11 @@ extension ChartCollectionViewCell {
         posY = captionLabel2nd.frame.origin.y + captionLabel2nd.frame.height + 8
         pieChartViewMonth = PieChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createPiechart(pieChart: pieChartViewMonth, emotionCount: EmotionDataStore.emotionsWithPeriod(period: .Month))
+        statisticsPresenter.rx_monthlyEmotion.asObservable().subscribe(onNext: { [weak self] emotionCount in
+            if let count = emotionCount {
+                self?.createPiechart(pieChart: self?.pieChartViewMonth, emotionCount: count)
+            }
+        }).addDisposableTo(disposeBag)
         pieChartViewMonth.descriptionText = ""
         
         posY = pieChartViewMonth.frame.origin.y + pieChartViewMonth.frame.height + 16
@@ -39,13 +47,17 @@ extension ChartCollectionViewCell {
         posY = captionLabel3rd.frame.origin.y + captionLabel3rd.frame.height + 8
         pieChartViewAll = PieChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createPiechart(pieChart: pieChartViewAll, emotionCount: EmotionDataStore.emotionsWithPeriod(period: .All))
+        statisticsPresenter.rx_entireEmotion.asObservable().subscribe(onNext: { [weak self] emotionCount in
+            if let count = emotionCount {
+                self?.createPiechart(pieChart: self?.pieChartViewAll, emotionCount: count)
+            }
+        }).addDisposableTo(disposeBag)
         pieChartViewAll.descriptionText = ""
         
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: posY + 250 + 16 + 100)
     }
     
-    func createPiechart(pieChart: PieChartView, emotionCount: EmotionCount) {
+    func createPiechart(pieChart: PieChartView?, emotionCount: EmotionCount) {
         let happyEntry = PieChartDataEntry(value: Double(emotionCount.happyCount), label: Emotion.Happy.toString())
         let enjoyEntry = PieChartDataEntry(value: Double(emotionCount.enjoyCount), label: Emotion.Enjoy.toString())
         let sadEntry   = PieChartDataEntry(value: Double(emotionCount.sadCount), label: Emotion.Sad.toString())
@@ -61,11 +73,12 @@ extension ChartCollectionViewCell {
         formatter.numberStyle = .none
         chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         
-        pieChart.data = chartData
-        pieChart.drawHoleEnabled = false
-        pieChart.legend.horizontalAlignment = .center
-        scrollView.addSubview(pieChart)
-        
+        if let pieChart = pieChart {
+            pieChart.data = chartData
+            pieChart.drawHoleEnabled = false
+            pieChart.legend.horizontalAlignment = .center
+            scrollView.addSubview(pieChart)
+        }
     }
     
     private func datasetValues(entries: [PieChartDataEntry]) -> [PieChartDataEntry] {

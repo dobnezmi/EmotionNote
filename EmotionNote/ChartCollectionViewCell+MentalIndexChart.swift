@@ -1,5 +1,5 @@
 //
-//  ChartCollectionViewCell+DailyChart.swift
+//  ChartCollectionViewCell+MentalIndexChart.swift
 //  EmotionNote
 //
 //  Created by 鈴木 慎吾 on 2016/09/03.
@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 extension ChartCollectionViewCell {
     
-    func showDailyEmotionalChart() {
+    func showMentalIndexChart() {
         if captionLabel1st != nil {
             return
         }
@@ -20,7 +21,7 @@ extension ChartCollectionViewCell {
         var posY = captionLabel1st.frame.origin.y + captionLabel1st.frame.height + 8
         lineChartViewToday = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartView: lineChartViewToday, emoteAt: Date())
+        createLineChart(lineChartView: lineChartViewToday, emotionVariable: mentalIndexPresenter.rx_todayEmotions)
         
         posY = lineChartViewToday.frame.origin.y + lineChartViewToday.frame.height + 16
         captionLabel2nd = UILabel()
@@ -28,7 +29,7 @@ extension ChartCollectionViewCell {
         posY = captionLabel2nd.frame.origin.y + captionLabel2nd.frame.height + 8
         lineChartViewYesterday = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartView: lineChartViewYesterday, emoteAt: Date().add(days: -1))
+        createLineChart(lineChartView: lineChartViewYesterday, emotionVariable: mentalIndexPresenter.rx_yesterdayEmotins)
         
         posY = lineChartViewYesterday.frame.origin.y + lineChartViewYesterday.frame.height + 16
         captionLabel3rd = UILabel()
@@ -36,9 +37,8 @@ extension ChartCollectionViewCell {
         posY = captionLabel3rd.frame.origin.y + captionLabel3rd.frame.height + 8
         lineChartViewBefore = LineChartView(frame:
             CGRect(x: leftMargin, y: posY, width: self.frame.width-rightMargin, height: 250))
-        createLineChart(lineChartView: lineChartViewBefore, emoteAt: Date().add(days: -2))
+        createLineChart(lineChartView: lineChartViewBefore, emotionVariable: mentalIndexPresenter.rx_oldEmotions)
         
-        // TODO: ↓ この計算、最後の１００が意味不明。でも無いと全て表示しきれない。時間があるときに。。
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: posY + 250 + 16 + 100)
     }
     
@@ -51,7 +51,7 @@ extension ChartCollectionViewCell {
         scrollView.addSubview(targetLabel)
     }
     
-    func createLineChart(lineChartView: LineChartView, emoteAt: Date) {
+    func createLineChart(lineChartView: LineChartView, emotionVariable: Variable<[EmotionEntity]>) {
         lineChartView.rightAxis.drawLabelsEnabled = false
         lineChartView.drawGridBackgroundEnabled = false
         lineChartView.xAxis.drawLabelsEnabled = true
@@ -73,31 +73,34 @@ extension ChartCollectionViewCell {
             emotionValues.append(ChartDataEntry(x: Double(i), y: 0))
         }
         
-        let emotions = EmotionDataStore.emotionsWithDate(targetDate: emoteAt)
-        for emotion in emotions {
-            switch emotion.emotion {
-            case Emotion.Happy.rawValue:
-                emotionValues[emotion.hour].y += 1.0
-            case Emotion.Enjoy.rawValue:
-                emotionValues[emotion.hour].y += 1.0
-            case Emotion.Sad.rawValue:
-                emotionValues[emotion.hour].y -= 1.0
-            case Emotion.Frustrated.rawValue:
-                emotionValues[emotion.hour].y -= 1.0
-            default:
-                break
+        emotionVariable.asObservable().subscribe(onNext: { emotions in
+            for emotion in emotions {
+                switch emotion.emotion {
+                case Emotion.Happy.rawValue:
+                    emotionValues[emotion.hour].y += 1.0
+                case Emotion.Enjoy.rawValue:
+                    emotionValues[emotion.hour].y += 1.0
+                case Emotion.Sad.rawValue:
+                    emotionValues[emotion.hour].y -= 1.0
+                case Emotion.Frustrated.rawValue:
+                    emotionValues[emotion.hour].y -= 1.0
+                default:
+                    break
+                }
             }
-        }
+            
+            let chartData = LineChartData()
+            let dataSet  = LineChartDataSet(values: emotionValues, label: "感情の起伏")
+            dataSet.colors = [NSUIColor(red: 0x21/0xff, green: 0x21/0xff, blue: 0x21/0xff, alpha: 1)]
+            dataSet.drawCirclesEnabled = false
+            dataSet.drawValuesEnabled = false
+            dataSet.lineWidth = 4
+            chartData.addDataSet(dataSet)
+            lineChartView.data = chartData
+            lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+            
+        }).addDisposableTo(disposeBag)
         
-        let chartData = LineChartData()
-        let dataSet  = LineChartDataSet(values: emotionValues, label: "感情の起伏")
-        dataSet.colors = [NSUIColor(red: 0x21/0xff, green: 0x21/0xff, blue: 0x21/0xff, alpha: 1)]
-        dataSet.drawCirclesEnabled = false
-        dataSet.drawValuesEnabled = false
-        dataSet.lineWidth = 4
-        chartData.addDataSet(dataSet)
-        lineChartView.data = chartData
-        lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
         scrollView.addSubview(lineChartView)
     }
 }

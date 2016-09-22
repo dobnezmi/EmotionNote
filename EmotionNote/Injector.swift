@@ -16,5 +16,26 @@ final class Injector {
         container.register(BubbleInteractor.self) { _ in
             BubbleInteractorImpl()
         }
+        container.register(EmotionDataStore.self) { _ in
+            EmotionDataStoreRealm()
+        }
+        container.register(MentalIndexChartInteractor.self) { _ in
+            MentalIndexChartInteractorImpl()
+        }
+        container.register(MentalIndexChartPresenter.self) { _ in
+            MentalIndexChartPresenterImpl()
+        }
+        container.register(HourlyChartInteractor.self) { _ in
+            HourlyChartInteractorImpl()
+        }
+        container.register(HourlyChartPresenter.self) { _ in
+            HourlyChartPresenterImpl()
+        }
+        container.register(MentalStatisticsInteractor.self) { _ in
+            MentalStatisticsInteractorImpl()
+        }
+        container.register(MentalStatisticsPresenter.self) { _ in
+            MentalStatisticsPresenterImpl()
+        }
     }
 }
