@@ -9,9 +9,12 @@
 import UIKit
 import SpriteKit
 import RxSwift
+import RxCocoa
 
 class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate, UIViewControllerTransitioningDelegate {
 
+    @IBOutlet weak var chartButton: UIButton!
+    
     var skView: SKView!
     var floatingCollectionScene: BubblesScene!
     let transitionAnimator = FadeTransition()
@@ -29,6 +32,7 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
         floatingCollectionScene = BubblesScene(size: skView.bounds.size)
         skView.presentScene(floatingCollectionScene)
         floatingCollectionScene.floatingDelegate = self
+        self.view.bringSubview(toFront: chartButton)
 
         bindModel()
     }
@@ -45,6 +49,10 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
                 self?.floatingCollectionScene.addChild(node!)
             }
         },onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+        
+        chartButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.router.nextScreen(viewController: self, transition: self)
+        }).addDisposableTo(disposeBag)
     }
 
     // MARK: SIFloatingCollectionSceneDelegate

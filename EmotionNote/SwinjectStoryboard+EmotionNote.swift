@@ -24,6 +24,13 @@ extension SwinjectStoryboard {
             vc.presenter = r.resolve(BubbleViewPresenter.self)
             vc.router = r.resolve(BubbleViewRouter.self)
         }
+        // チャート画面
+        defaultContainer.register(DailyChartViewRouter.self) { _ in
+            DailyChartViewWireframe()
+        }
+        defaultContainer.registerForStoryboard(DailyChartViewController.self) { r, vc in
+            vc.router = r.resolve(DailyChartViewRouter.self)
+        }
     }
 }
 

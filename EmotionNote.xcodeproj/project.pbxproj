@@ -181,6 +181,7 @@
 		60B19FE11D8D03EF004E5E1C /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19FE01D8D03EF004E5E1C /* Date+Util.swift */; };
 		60BB7D6D1D5D8F610088745F /* EmotionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB7D6C1D5D8F610088745F /* EmotionEntity.swift */; };
 		60BB7D6F1D5D92C50088745F /* EmotionDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB7D6E1D5D92C50088745F /* EmotionDataStore.swift */; };
+		60BDC25D1D96600200D014D6 /* DailyChartViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDC25C1D96600200D014D6 /* DailyChartViewRouter.swift */; };
 		60C5F9CB1D8E596A00D858C5 /* EmotionDataStoreRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9CA1D8E596A00D858C5 /* EmotionDataStoreRealm.swift */; };
 		60C5F9CD1D8E7D8900D858C5 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; };
 		60C5F9CE1D8E7D9700D858C5 /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -423,6 +424,7 @@
 		60B19FE01D8D03EF004E5E1C /* Date+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
 		60BB7D6C1D5D8F610088745F /* EmotionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionEntity.swift; sourceTree = "<group>"; };
 		60BB7D6E1D5D92C50088745F /* EmotionDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataStore.swift; sourceTree = "<group>"; };
+		60BDC25C1D96600200D014D6 /* DailyChartViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartViewRouter.swift; sourceTree = "<group>"; };
 		60C5F9CA1D8E596A00D858C5 /* EmotionDataStoreRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataStoreRealm.swift; sourceTree = "<group>"; };
 		60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalIndexChartPresenter.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				60ECC3691D8ADC78003EB1C6 /* BubbleViewRouter.swift */,
+				60BDC25C1D96600200D014D6 /* DailyChartViewRouter.swift */,
 			);
 			name = Wireframe;
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 				60392BEB1D8D8FE6005CBCFD /* BubbleChartView.swift in Sources */,
 				60392C0B1D8D8FE6005CBCFD /* ChartData.swift in Sources */,
 				60392BFC1D8D8FE6005CBCFD /* MarkerView.swift in Sources */,
+				60BDC25D1D96600200D014D6 /* DailyChartViewRouter.swift in Sources */,
 				60392C2F1D8D8FE6005CBCFD /* ChartHighlighter.swift in Sources */,
 				60392C211D8D8FE6005CBCFD /* ILineChartDataSet.swift in Sources */,
 				60392C671D8D8FE6005CBCFD /* Platform.swift in Sources */,

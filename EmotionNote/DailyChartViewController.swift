@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import RxSwift
 
 class DailyChartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    let disposeBag = DisposeBag()
+    var router: DailyChartViewRouter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,9 @@ class DailyChartViewController: UIViewController, UICollectionViewDataSource, UI
                                    forCellWithReuseIdentifier: ChartCollectionViewCell.HourlyChartCellID)
         collectionView.register(ChartCollectionViewCell.nib(),
                                    forCellWithReuseIdentifier: ChartCollectionViewCell.PeriodicChartCellID)
+        closeButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.router.closeAction(viewController: self)
+        }).addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
