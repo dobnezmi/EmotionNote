@@ -12,6 +12,7 @@ import RxSwift
 protocol BubbleViewPresenter: class {
     var rx_emotions: Variable<[Emotion]> { get }
     func didSelectAtIndex(_ index: Int)
+    func resetEmotions()
 }
 
 final class BubbleViewPresenterImpl: BubbleViewPresenter {
@@ -19,13 +20,18 @@ final class BubbleViewPresenterImpl: BubbleViewPresenter {
     var interactor: BubbleInteractor? = Injector.container.resolve(BubbleInteractor.self)
     
     init() {
-        let emotions: [Emotion] = [.Happy, .Enjoy, .Sad, .Frustrated]
-        for emotion in emotions {
-            rx_emotions.value.append(emotion)
-        }
+        resetEmotions()
     }
     
     func didSelectAtIndex(_ index: Int) {
         interactor?.storeEmotion(emotion: rx_emotions.value[index])
+    }
+    
+    func resetEmotions() {
+        let emotions: [Emotion] = [.Happy, .Enjoy, .Sad, .Frustrated]
+        rx_emotions.value.removeAll()
+        for emotion in emotions {
+            rx_emotions.value.append(emotion)
+        }
     }
 }

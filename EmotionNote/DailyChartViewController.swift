@@ -9,18 +9,23 @@
 import UIKit
 import RxSwift
 
-class DailyChartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DailyChartViewController: UIViewController,
+                                UICollectionViewDataSource,
+                                UICollectionViewDelegateFlowLayout,
+                                UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var closeButton: UIButton!
     
+    let transitionAnimator = FadeTransition()
     let disposeBag = DisposeBag()
     var router: DailyChartViewRouter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        transitioningDelegate = self
         collectionView.register(ChartCollectionViewCell.nib(),
                                    forCellWithReuseIdentifier: ChartCollectionViewCell.DailyChartCellID)
         collectionView.register(ChartCollectionViewCell.nib(),
@@ -78,5 +83,22 @@ class DailyChartViewController: UIViewController, UICollectionViewDataSource, UI
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let page = scrollView.contentOffset.x / collectionView.frame.width
         pageControl.currentPage = Int(ceil(page))
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimator
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimator
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimator
     }
 }

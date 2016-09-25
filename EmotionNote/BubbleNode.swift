@@ -70,6 +70,7 @@ class BubbleNode: SIFloatingNode {
         let scale = SKAction.scale(to: 0.1, duration: 1.5)
         
         return SKAction.group([curve, fade, scale])
+        
     }
     
     override func removeAnimation() -> SKAction? {

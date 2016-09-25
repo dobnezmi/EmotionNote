@@ -159,6 +159,18 @@ public class SIFloatingCollectionScene: SKScene {
         mode = .Normal
     }
     
+    public func resetNodes() {
+        for node in self.children {
+            node.alpha = 1.0
+            node.xScale = 1.0
+            node.yScale = 1.0
+            node.zRotation = 0.0
+            
+            let sz = UIScreen.main.bounds
+            node.position = CGPoint(x: sz.width/2, y: sz.height/2)
+        }
+    }
+    
     // MARK: -
     // MARK: Nodes Manipulation
     private func cancelRemovingNode(node: SIFloatingNode!) {
@@ -272,7 +284,7 @@ public class SIFloatingCollectionScene: SKScene {
         magneticField = SKFieldNode.radialGravityField()
         magneticField.region = SKRegion(radius: 10000)
         magneticField.minimumRadius = 10000
-        magneticField.strength = 8000
+        magneticField.strength = 10000
         magneticField.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(magneticField)
     }

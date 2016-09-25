@@ -86,6 +86,7 @@ extension ChartCollectionViewCell {
             let chartData = BarChartData()
             let dataSet = BarChartDataSet(values: emotionValues, label: "時間帯別「\(emotion.toString())」")
             dataSet.colors = [NSUIColor(red: 245/255.0, green: 199/255.0, blue: 0/255.0, alpha: 1.0)]
+            dataSet.drawValuesEnabled = false
             chartData.addDataSet(dataSet)
             
             barChartView.data = chartData

@@ -9,14 +9,14 @@
 import UIKit
 
 protocol BubbleViewRouter: class {
-    func nextScreen(viewController: UIViewController?, transition: UIViewControllerTransitioningDelegate?)
+    func nextScreen(viewController: UIViewController?)
 }
 
 final class BubbleViewRouterImpl: BubbleViewRouter {
-    func nextScreen(viewController: UIViewController?, transition: UIViewControllerTransitioningDelegate?) {
+    func nextScreen(viewController: UIViewController?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DailyChartViewController")
-        vc.transitioningDelegate = transition
+        vc.transitioningDelegate = vc as? UIViewControllerTransitioningDelegate
         viewController?.present(vc, animated: true, completion: nil)
     }
 }
