@@ -17,7 +17,7 @@ final class Injector {
             BubbleInteractorImpl()
         }
         container.register(EmotionDataStore.self) { _ in
-            EmotionDataStoreRealm()
+            EmotionDataStoreRealm.sharedInstance
         }
         container.register(MentalIndexChartInteractor.self) { _ in
             MentalIndexChartInteractorImpl()
