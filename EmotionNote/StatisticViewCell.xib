@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="01t-7e-YLg" customClass="StatisticViewCell" customModule="EmotionNote" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="444"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="444"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-cJ-L01"/>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="mdK-cJ-L01" secondAttribute="bottom" id="Aqb-yq-f9W"/>
+                <constraint firstAttribute="trailing" secondItem="mdK-cJ-L01" secondAttribute="trailing" id="duD-wa-M4k"/>
+                <constraint firstItem="mdK-cJ-L01" firstAttribute="top" secondItem="01t-7e-YLg" secondAttribute="top" id="f1L-df-GWC"/>
+                <constraint firstItem="mdK-cJ-L01" firstAttribute="leading" secondItem="01t-7e-YLg" secondAttribute="leading" id="uIm-cS-j0U"/>
+            </constraints>
+            <size key="customSize" width="305" height="444"/>
+            <connections>
+                <outlet property="scrollView" destination="mdK-cJ-L01" id="7ex-tm-Z7U"/>
+            </connections>
+            <point key="canvasLocation" x="49.5" y="5"/>
+        </collectionViewCell>
+    </objects>
+</document>

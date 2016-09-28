@@ -8,28 +8,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChartCollectionViewCell" customModule="EmotionNote" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vdC-un-AJf" customClass="HourlyChartViewCell" customModule="EmotionNote" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="427" height="556"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="427" height="556"/>
-                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngp-bh-Dmg"/>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oT1-eA-3uC"/>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Ngp-bh-Dmg" secondAttribute="bottom" id="4oV-Bm-krR"/>
-                <constraint firstAttribute="trailing" secondItem="Ngp-bh-Dmg" secondAttribute="trailing" id="CxM-Mr-TVH"/>
-                <constraint firstItem="Ngp-bh-Dmg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="R7D-2p-8xo"/>
-                <constraint firstItem="Ngp-bh-Dmg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zJI-5Z-D7q"/>
+                <constraint firstItem="oT1-eA-3uC" firstAttribute="leading" secondItem="vdC-un-AJf" secondAttribute="leading" id="3VX-Qu-JVX"/>
+                <constraint firstItem="oT1-eA-3uC" firstAttribute="top" secondItem="vdC-un-AJf" secondAttribute="top" id="HBo-EK-teG"/>
+                <constraint firstAttribute="bottom" secondItem="oT1-eA-3uC" secondAttribute="bottom" id="HIP-Mk-gHr"/>
+                <constraint firstAttribute="trailing" secondItem="oT1-eA-3uC" secondAttribute="trailing" id="OSu-01-jVX"/>
             </constraints>
-            <size key="customSize" width="427" height="556"/>
             <connections>
-                <outlet property="scrollView" destination="Ngp-bh-Dmg" id="cWU-r9-jM0"/>
+                <outlet property="scrollView" destination="oT1-eA-3uC" id="vpN-1m-5Bz"/>
             </connections>
-            <point key="canvasLocation" x="476.5" y="321"/>
+            <point key="canvasLocation" x="33.5" y="54"/>
         </collectionViewCell>
     </objects>
 </document>

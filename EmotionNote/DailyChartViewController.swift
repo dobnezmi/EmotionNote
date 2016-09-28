@@ -25,13 +25,12 @@ class DailyChartViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        transitioningDelegate = self
         collectionView.register(ChartCollectionViewCell.nib(),
                                    forCellWithReuseIdentifier: ChartCollectionViewCell.DailyChartCellID)
-        collectionView.register(ChartCollectionViewCell.nib(),
-                                   forCellWithReuseIdentifier: ChartCollectionViewCell.HourlyChartCellID)
-        collectionView.register(ChartCollectionViewCell.nib(),
-                                   forCellWithReuseIdentifier: ChartCollectionViewCell.PeriodicChartCellID)
+        collectionView.register(HourlyChartViewCell.nib(),
+                                   forCellWithReuseIdentifier: HourlyChartViewCell.HourlyChartCellID)
+        collectionView.register(StatisticViewCell.nib(),
+                                   forCellWithReuseIdentifier: StatisticViewCell.StatisticChartCellID)
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.router.closeAction(viewController: self)
         }).addDisposableTo(disposeBag)
@@ -49,20 +48,22 @@ class DailyChartViewController: UIViewController,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell: ChartCollectionViewCell!
         switch(indexPath.item) {
         case 0:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
             cell.showMentalIndexChart()
+            return cell
         case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            let cell: HourlyChartViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyChartViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! HourlyChartViewCell
             cell.showHourlyEmoteChart()
+            return cell
         default:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.PeriodicChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            let cell: StatisticViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticViewCell.StatisticChartCellID, for: indexPath as IndexPath) as! StatisticViewCell
             cell.showPeriodicEmotionChart()
+            return cell
         }
         
-        return cell
+        
     }
 
     // MARK: UICollectionViewDelegateFlowLayout
