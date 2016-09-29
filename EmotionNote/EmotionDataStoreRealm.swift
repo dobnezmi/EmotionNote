@@ -19,146 +19,127 @@ final class EmotionDataStoreRealm: EmotionDataStore {
     
     // MARK: -- Fetch
     // 指定日付のエモーションデータ取得
-    func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]> {
-        return Observable.create { [weak self] observer in
-            let stDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 0, minute: 0, second: 0)
-            let edDate = Date.at(year: targetDate.year, month: targetDate.month, day: targetDate.day, hour: 23, minute: 59, second: 59)
+    func emotionsWithDate(targetDate: Date, completion: ([EmotionEntity])->()) {
+        let stDate = Date.at(year: targetDate.year,
+                             month: targetDate.month,
+                             day: targetDate.day,
+                             hour: 0, minute: 0, second: 0)
+        let edDate = Date.at(year: targetDate.year,
+                             month: targetDate.month,
+                             day: targetDate.day,
+                             hour: 23, minute: 59, second: 59)
             
-            var emotes: [EmotionEntity] = []
-            if let results = self?.realm?.objects(EmotionEntity.self)
+        var emotes: [EmotionEntity] = []
+        if let results = realm?.objects(EmotionEntity.self)
                                 .filter("emoteAt >= %@ AND emoteAt <= %@", stDate, edDate) {
-                for result in results {
-                    emotes.append(result)
-                }
+            for result in results {
+                emotes.append(result)
             }
-            
-            observer.onNext(emotes)
-            return Disposables.create()
         }
+            
+        completion(emotes)
     }
     
     // 指定期間の時間帯別エモーションデータ取得
-    func rx_emotionsWithPeriodPerHours(period: EmotionPeriod) -> Observable<[EmotionCount]> {
-        return Observable.create { [weak self] observer in
-            guard let s = self else {
-                return Disposables.create()
-            }
+    func emotionsWithPeriodPerHours(period: EmotionPeriod, completion: ([EmotionCount])->()) {
+
+        var resultsPerHour: [EmotionCount] = []
+        // 24時間分0で初期化
+        for _ in 0...23 {
+            resultsPerHour.append(EmotionCount())
+        }
             
-            var resultsPerHour: [EmotionCount] = []
-            // 24時間分0で初期化
-            for _ in 0...23 {
-                resultsPerHour.append(EmotionCount())
-            }
+        var queryResult: Results<EmotionEntity>?
+        if let filterStr = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
+        } else {
+            queryResult = realm?.objects(EmotionEntity.self)
+        }
             
-            var queryResult: Results<EmotionEntity>?
-            if let filterStr = s.filterStringWithPeriod(period: period) {
-                queryResult = s.realm?.objects(EmotionEntity.self).filter(filterStr)
-            } else {
-                queryResult = s.realm?.objects(EmotionEntity.self)
-            }
-            
-            if let results = queryResult {
-                for result in results {
-                    switch(result.emotion) {
-                    case Emotion.Happy.rawValue:
-                        resultsPerHour[result.hour].happyCount += 1
-                    case Emotion.Enjoy.rawValue:
-                        resultsPerHour[result.hour].enjoyCount += 1
-                    case Emotion.Sad.rawValue:
-                        resultsPerHour[result.hour].sadCount += 1
-                    case Emotion.Frustrated.rawValue:
-                        resultsPerHour[result.hour].frustCount += 1
-                    default:
-                        break
-                    }
+        if let results = queryResult {
+            for result in results {
+                switch(result.emotion) {
+                case Emotion.Happy.rawValue:
+                    resultsPerHour[result.hour].happyCount += 1
+                case Emotion.Enjoy.rawValue:
+                    resultsPerHour[result.hour].enjoyCount += 1
+                case Emotion.Sad.rawValue:
+                    resultsPerHour[result.hour].sadCount += 1
+                case Emotion.Frustrated.rawValue:
+                    resultsPerHour[result.hour].frustCount += 1
+                default:
+                    break
                 }
             }
-            
-            observer.onNext(resultsPerHour)
-            
-            return Disposables.create()
         }
+            
+        completion(resultsPerHour)
     }
     
     // 曜日別エモーションデータ取得
-    func rx_emotionsWithWeek(period: EmotionPeriod) -> Observable<[EmotionCount]> {
-        return Observable.create { [weak self] observer in
-            guard let s = self else {
-                return Disposables.create()
-            }
+    func emotionsWithWeek(period: EmotionPeriod, completion: ([EmotionCount])->()) {
+
+        var resultsWeekday: [EmotionCount] = []
+        // 0で初期化
+        for _ in 0...6 {
+            resultsWeekday.append(EmotionCount())
+        }
             
-            var resultsWeekday: [EmotionCount] = []
-            // 0で初期化
-            for _ in 0...6 {
-                resultsWeekday.append(EmotionCount())
-            }
+        var queryResult: Results<EmotionEntity>?
+        if let filterStr = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(filterStr)
+        } else {
+            queryResult = realm?.objects(EmotionEntity.self)
+        }
             
-            var queryResult: Results<EmotionEntity>?
-            if let filterStr = s.filterStringWithPeriod(period: period) {
-                queryResult = s.realm?.objects(EmotionEntity.self).filter(filterStr)
-            } else {
-                queryResult = s.realm?.objects(EmotionEntity.self)
-            }
-            
-            if let results = queryResult {
+        if let results = queryResult {
                 
-                for result in results {
-                    switch(result.emotion) {
-                    case Emotion.Happy.rawValue:
-                        resultsWeekday[result.weekday].happyCount += 1
-                    case Emotion.Enjoy.rawValue:
-                        resultsWeekday[result.weekday].enjoyCount += 1
-                    case Emotion.Sad.rawValue:
-                        resultsWeekday[result.weekday].sadCount += 1
-                    case Emotion.Frustrated.rawValue:
-                        resultsWeekday[result.weekday].frustCount += 1
-                    default:
-                        break
-                    }
+            for result in results {
+                switch(result.emotion) {
+                case Emotion.Happy.rawValue:
+                    resultsWeekday[result.weekday].happyCount += 1
+                case Emotion.Enjoy.rawValue:
+                    resultsWeekday[result.weekday].enjoyCount += 1
+                case Emotion.Sad.rawValue:
+                    resultsWeekday[result.weekday].sadCount += 1
+                case Emotion.Frustrated.rawValue:
+                    resultsWeekday[result.weekday].frustCount += 1
+                default:
+                    break
                 }
             }
-            observer.onNext(resultsWeekday)
-            
-            return Disposables.create()
         }
+        completion(resultsWeekday)
     }
     
     // 指定期間のエモーションデータ取得
-    func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
-        return Observable.create { [weak self] observer in
-            guard let s = self else {
-                return Disposables.create()
-            }
+    func emotionsWithPeriod(period: EmotionPeriod, completion: (EmotionCount)->()) {
+
+        var queryResult: Results<EmotionEntity>?
             
-            var queryResult: Results<EmotionEntity>?
+        if let predicate = filterStringWithPeriod(period: period) {
+            queryResult = realm?.objects(EmotionEntity.self).filter(predicate)
+        } else {
+            queryResult = realm?.objects(EmotionEntity.self)
+        }
             
-            if let predicate = s.filterStringWithPeriod(period: period) {
-                queryResult = s.realm?.objects(EmotionEntity.self).filter(predicate)
-            } else {
-                queryResult = s.realm?.objects(EmotionEntity.self)
-            }
-            
-            if let results = queryResult {
-                let emoteCount = results.reduce(EmotionCount(),
-                                                { count, result in
+        if let results = queryResult {
+            let emoteCount = results.reduce(EmotionCount(), { count, result in
                                                     
-                                                    switch(result.emotion) {
-                                                    case Emotion.Happy.rawValue:
-                                                        return count.addHappy()
-                                                    case Emotion.Enjoy.rawValue:
-                                                        return count.addEnjoy()
-                                                    case Emotion.Sad.rawValue:
-                                                        return count.addSad()
-                                                    case Emotion.Frustrated.rawValue:
-                                                        return count.addFrustrate()
-                                                    default:
-                                                        return count
+                switch(result.emotion) {
+                case Emotion.Happy.rawValue:
+                    return count.addHappy()
+                case Emotion.Enjoy.rawValue:
+                    return count.addEnjoy()
+                case Emotion.Sad.rawValue:
+                    return count.addSad()
+                case Emotion.Frustrated.rawValue:
+                    return count.addFrustrate()
+                default:
+                    return count
                                                     }
-                })
-                observer.onNext(emoteCount)
-            }
-            
-            return Disposables.create()
+            })
+            completion(emoteCount)
         }
     }
     

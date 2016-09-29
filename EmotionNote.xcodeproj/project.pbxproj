@@ -10,6 +10,8 @@
 		601C61B41D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */; };
 		601DF6C51D5CBB24009BC193 /* DailyChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */; };
 		601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */; };
+		602104111D9D536100328449 /* WeeklyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602104101D9D536100328449 /* WeeklyViewCell.swift */; };
+		602104131D9D541100328449 /* WeeklyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602104121D9D541100328449 /* WeeklyViewCell.xib */; };
 		6022413D1D9BFF3A00FCACFD /* HourlyChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6022413C1D9BFF3A00FCACFD /* HourlyChartViewCell.swift */; };
 		6022413F1D9C00B300FCACFD /* HourlyChartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6022413E1D9C00B300FCACFD /* HourlyChartViewCell.xib */; };
 		602241411D9C03C400FCACFD /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602241401D9C03C400FCACFD /* ChartViewCell.swift */; };
@@ -261,6 +263,8 @@
 		601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+EmotionNote.swift"; sourceTree = "<group>"; };
 		601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartViewController.swift; sourceTree = "<group>"; };
 		601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		602104101D9D536100328449 /* WeeklyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyViewCell.swift; sourceTree = "<group>"; };
+		602104121D9D541100328449 /* WeeklyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyViewCell.xib; sourceTree = "<group>"; };
 		6022413C1D9BFF3A00FCACFD /* HourlyChartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyChartViewCell.swift; sourceTree = "<group>"; };
 		6022413E1D9C00B300FCACFD /* HourlyChartViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HourlyChartViewCell.xib; sourceTree = "<group>"; };
 		602241401D9C03C400FCACFD /* ChartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewCell.swift; sourceTree = "<group>"; };
@@ -879,6 +883,8 @@
 				6022413E1D9C00B300FCACFD /* HourlyChartViewCell.xib */,
 				602241421D9C061C00FCACFD /* StatisticViewCell.swift */,
 				602241441D9C078800FCACFD /* StatisticViewCell.xib */,
+				602104101D9D536100328449 /* WeeklyViewCell.swift */,
+				602104121D9D541100328449 /* WeeklyViewCell.xib */,
 			);
 			name = parts;
 			sourceTree = "<group>";
@@ -1049,6 +1055,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602104131D9D541100328449 /* WeeklyViewCell.xib in Resources */,
 				6063A1BD1D4E246800136C1F /* LaunchScreen.storyboard in Resources */,
 				6082BD781D6858F900EAE220 /* ChartCollectionViewCell.xib in Resources */,
 				6022413F1D9C00B300FCACFD /* HourlyChartViewCell.xib in Resources */,
@@ -1125,6 +1132,7 @@
 				60FD48061D4E410D00D0D380 /* SIFloatingNode.swift in Sources */,
 				60392C001D8D8FE6005CBCFD /* BarChartData.swift in Sources */,
 				60392C681D8D8FE6005CBCFD /* Transformer.swift in Sources */,
+				602104111D9D536100328449 /* WeeklyViewCell.swift in Sources */,
 				60C5F9D51D8E848100D858C5 /* MentalIndexChartInteractor.swift in Sources */,
 				60392C651D8D8FE6005CBCFD /* ChartUtils.swift in Sources */,
 				60392C1F1D8D8FE6005CBCFD /* ICandleChartDataSet.swift in Sources */,

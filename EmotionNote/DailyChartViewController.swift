@@ -50,16 +50,16 @@ class DailyChartViewController: UIViewController,
         
         switch(indexPath.item) {
         case 0:
-            let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
-            cell.showMentalIndexChart()
+            let cell: StatisticViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticViewCell.StatisticChartCellID, for: indexPath as IndexPath) as! StatisticViewCell
+            cell.showPeriodicEmotionChart()
             return cell
         case 1:
             let cell: HourlyChartViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyChartViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! HourlyChartViewCell
             cell.showHourlyEmoteChart()
             return cell
         default:
-            let cell: StatisticViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticViewCell.StatisticChartCellID, for: indexPath as IndexPath) as! StatisticViewCell
-            cell.showPeriodicEmotionChart()
+            let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            cell.showMentalIndexChart()
             return cell
         }
         

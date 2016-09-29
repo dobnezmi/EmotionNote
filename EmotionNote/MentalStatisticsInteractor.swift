@@ -17,6 +17,11 @@ final class MentalStatisticsInteractorImpl: MentalStatisticsInteractor {
     let dataStore: EmotionDataStore = Injector.container.resolve(EmotionDataStore.self)!
     
     func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount> {
-        return dataStore.rx_emotionsWithPeriod(period: period)
+        return Observable.create { [weak self] observer in
+            self?.dataStore.emotionsWithPeriod(period: period, completion: { emotionCount in
+                observer.onNext(emotionCount)
+            })
+            return Disposables.create()
+        }
     }
 }

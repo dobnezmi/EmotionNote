@@ -13,13 +13,13 @@ import RxSwift
 protocol EmotionDataStore: class {
     static var sharedInstance: EmotionDataStore { get }
     // 指定日付のエモーションデータ取得
-    func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]>
+    func emotionsWithDate(targetDate: Date, completion: ([EmotionEntity])->())
     // 指定期間の時間帯別エモーションデータ取得
-    func rx_emotionsWithPeriodPerHours(period: EmotionPeriod) -> Observable<[EmotionCount]>
+    func emotionsWithPeriodPerHours(period: EmotionPeriod, completion: ([EmotionCount])->())
     // 曜日別エモーションデータ取得
-    func rx_emotionsWithWeek(period: EmotionPeriod) -> Observable<[EmotionCount]>
+    func emotionsWithWeek(period: EmotionPeriod, completion: ([EmotionCount])->())
     // 指定期間のエモーションデータ取得
-    func rx_emotionsWithPeriod(period: EmotionPeriod) -> Observable<EmotionCount>
+    func emotionsWithPeriod(period: EmotionPeriod, completion: (EmotionCount)->())
     // エモーション保存
     func storeEmotion(emotion: Emotion)
     // MARK: -- Delete

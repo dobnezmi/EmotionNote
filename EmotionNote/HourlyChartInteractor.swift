@@ -17,6 +17,11 @@ final class HourlyChartInteractorImpl: HourlyChartInteractor {
     let dataStore: EmotionDataStore = Injector.container.resolve(EmotionDataStore.self)!
     
     func rx_emotionsWithPeriodPerHours(period: EmotionPeriod) -> Observable<[EmotionCount]> {
-        return dataStore.rx_emotionsWithPeriodPerHours(period: period)
+        return Observable.create { [weak self] observer in
+            self?.dataStore.emotionsWithPeriodPerHours(period: period, completion: { emotionCount in
+                observer.onNext(emotionCount)
+            })
+            return Disposables.create()
+        }
     }
 }

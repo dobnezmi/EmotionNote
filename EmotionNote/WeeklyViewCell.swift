@@ -1,21 +1,21 @@
 //
-//  StatisticViewCell.swift
+//  WeeklyViewCell.swift
 //  EmotionNote
 //
-//  Created by 鈴木 慎吾 on 2016/09/28.
+//  Created by 鈴木 慎吾 on 2016/09/29.
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 
 import UIKit
 import RxSwift
 
-class StatisticViewCell: ChartViewCell {
+class WeeklyViewCell: ChartViewCell {
     @IBOutlet weak var scrollView: UIScrollView!
     
     let disposeBag = DisposeBag()
     
     // Cell ID
-    static let StatisticChartCellID = "StatisticCell"
+    static let WeeklyChartCellID = "WeeklyCell"
     
     // Presenter
     let statisticsPresenter: MentalStatisticsPresenter = Injector.container.resolve(MentalStatisticsPresenter.self)!
@@ -45,7 +45,7 @@ class StatisticViewCell: ChartViewCell {
         return UINib(nibName: NSStringFromClass(self).components(separatedBy: ".").last!,
                      bundle: Bundle(for: self))
     }
-
+    
     func showPeriodicEmotionChart() {
         if captionLabel1st != nil {
             return
@@ -125,5 +125,4 @@ class StatisticViewCell: ChartViewCell {
         }
         return values
     }
-    
 }

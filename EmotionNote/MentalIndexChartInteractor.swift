@@ -17,6 +17,11 @@ final class MentalIndexChartInteractorImpl: MentalIndexChartInteractor {
     let dataStore = Injector.container.resolve(EmotionDataStore.self)!
     
     func rx_emotionsWithDate(targetDate: Date) -> Observable<[EmotionEntity]> {
-        return dataStore.rx_emotionsWithDate(targetDate: targetDate)
+        return Observable.create { [weak self] observer in
+            self?.dataStore.emotionsWithDate(targetDate: targetDate, completion: { entity in
+                observer.onNext(entity)
+            })
+            return Disposables.create()
+        }
     }
 }
