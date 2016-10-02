@@ -62,38 +62,38 @@ class ChartTestCase: XCTestCase {
             expectations.append(self.expectation(description: "DataStore test"))
         }
         
-        dataStore.rx_emotionsWithDate(targetDate: Date().add(days: -1)).subscribe(onNext: { emotions in
+        dataStore.emotionsWithDate(targetDate: Date().add(days: -1)) { emotions in
             XCTAssertEqual(emotions.count, 1)
             expectations[0].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithDate(targetDate: Date()).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithDate(targetDate: Date()) { emotions in
             XCTAssertEqual(emotions.count, 0)
             expectations[1].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithPeriod(period: .Week).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithPeriod(period: .Week) { emotions in
             XCTAssertEqual(emotions.enjoyCount, 2)
             expectations[2].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithPeriod(period: .Month).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithPeriod(period: .Month) { emotions in
             XCTAssertEqual(emotions.enjoyCount, 3)
             expectations[3].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithPeriod(period: .All).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithPeriod(period: .All) { emotions in
             XCTAssertEqual(emotions.enjoyCount, 4)
             expectations[4].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithWeek(period: .All).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithWeek(period: .All) { emotions in
             XCTAssertEqual(emotions[0].enjoyCount, 0)
             XCTAssertEqual(emotions[1].enjoyCount, 3)
             XCTAssertEqual(emotions[2].enjoyCount, 1)
             expectations[5].fulfill()
-        }).addDisposableTo(disposeBag)
-        dataStore.rx_emotionsWithPeriodPerHours(period: .All).subscribe(onNext: { emotions in
+        }
+        dataStore.emotionsWithPeriodPerHours(period: .All) { emotions in
             XCTAssertEqual(emotions[0].enjoyCount, 0)
             XCTAssertEqual(emotions[1].enjoyCount, 1)
             XCTAssertEqual(emotions[2].enjoyCount, 3)
             expectations[6].fulfill()
-        }).addDisposableTo(disposeBag)
+        }
 
         self.waitForExpectations(timeout: 1.0, handler: nil)
     }

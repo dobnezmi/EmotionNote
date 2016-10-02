@@ -13,7 +13,6 @@ import Swinject
 
 class BubbleTestCase: XCTestCase {
     var dataStore: EmotionDataStore!
-    let disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
@@ -32,11 +31,11 @@ class BubbleTestCase: XCTestCase {
         let expectation = self.expectation(description: "stored expectation")
 
         presenter.didSelectAtIndex(1)
-        dataStore.rx_emotionsWithDate(targetDate: Date()).subscribe(onNext: { emotions in
+        dataStore.emotionsWithDate(targetDate: Date(), completion: { emotions in
             XCTAssertEqual(emotions.count, 1)
             XCTAssertEqual(emotions[0].emotion, presenter.rx_emotions.value[1].rawValue)
             expectation.fulfill()
-        }).addDisposableTo(disposeBag)
+        })
         self.waitForExpectations(timeout: 0.5, handler: nil)
     }
 }
