@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600B144D1DA0050800E3A1AE /* WeeklyChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B144C1DA0050800E3A1AE /* WeeklyChartInteractor.swift */; };
+		600B144F1DA0070200E3A1AE /* WeeklyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B144E1DA0070200E3A1AE /* WeeklyChartPresenter.swift */; };
 		601C61B41D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */; };
 		601DF6C51D5CBB24009BC193 /* DailyChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */; };
 		601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */; };
@@ -260,6 +262,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		600B144C1DA0050800E3A1AE /* WeeklyChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyChartInteractor.swift; sourceTree = "<group>"; };
+		600B144E1DA0070200E3A1AE /* WeeklyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyChartPresenter.swift; sourceTree = "<group>"; };
 		601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+EmotionNote.swift"; sourceTree = "<group>"; };
 		601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartViewController.swift; sourceTree = "<group>"; };
 		601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
@@ -869,6 +873,7 @@
 				60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */,
 				60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */,
 				60899E1D1D90283300C84221 /* MentalStatisticsPresenter.swift */,
+				600B144E1DA0070200E3A1AE /* WeeklyChartPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -913,6 +918,7 @@
 				60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */,
 				60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */,
 				60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */,
+				600B144C1DA0050800E3A1AE /* WeeklyChartInteractor.swift */,
 			);
 			name = Interactor;
 			sourceTree = "<group>";
@@ -1124,6 +1130,7 @@
 				60392C181D8D8FE6005CBCFD /* RadarChartDataEntry.swift in Sources */,
 				60392C141D8D8FE6005CBCFD /* PieChartData.swift in Sources */,
 				60392C0A1D8D8FE6005CBCFD /* CandleChartDataSet.swift in Sources */,
+				600B144F1DA0070200E3A1AE /* WeeklyChartPresenter.swift in Sources */,
 				601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */,
 				60392C481D8D8FE6005CBCFD /* BarLineScatterCandleBubbleRenderer.swift in Sources */,
 				6022413D1D9BFF3A00FCACFD /* HourlyChartViewCell.swift in Sources */,
@@ -1230,6 +1237,7 @@
 				60392BFA1D8D8FE6005CBCFD /* LegendEntry.swift in Sources */,
 				60392C371D8D8FE6005CBCFD /* Range.swift in Sources */,
 				60392C3F1D8D8FE6005CBCFD /* ScatterChartDataProvider.swift in Sources */,
+				600B144D1DA0050800E3A1AE /* WeeklyChartInteractor.swift in Sources */,
 				60392C021D8D8FE6005CBCFD /* BarChartDataSet.swift in Sources */,
 				60392C2B1D8D8FE6005CBCFD /* IAxisValueFormatter.swift in Sources */,
 				60392C631D8D8FE6005CBCFD /* YAxisRendererRadarChart.swift in Sources */,

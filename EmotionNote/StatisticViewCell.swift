@@ -60,7 +60,7 @@ class StatisticViewCell: ChartViewCell {
             if let count = emotionCount {
                 self?.createPiechart(pieChart: self?.pieChartViewWeek, emotionCount: count)
             }
-            }).addDisposableTo(disposeBag)
+        }).addDisposableTo(disposeBag)
         pieChartViewWeek.descriptionText = ""
         
         posY = pieChartViewWeek.frame.origin.y + pieChartViewWeek.frame.height + 16
@@ -93,6 +93,13 @@ class StatisticViewCell: ChartViewCell {
     }
     
     func createPiechart(pieChart: PieChartView?, emotionCount: EmotionCount) {
+        guard emotionCount.sumAllEmotions() > 0 else {
+                if let pieChart = pieChart {
+                    emptyLabel(baseView: scrollView, rect: pieChart.frame)
+                }
+                return
+        }
+        
         let happyEntry = PieChartDataEntry(value: Double(emotionCount.happyCount), label: Emotion.Happy.toString())
         let enjoyEntry = PieChartDataEntry(value: Double(emotionCount.enjoyCount), label: Emotion.Enjoy.toString())
         let sadEntry   = PieChartDataEntry(value: Double(emotionCount.sadCount), label: Emotion.Sad.toString())

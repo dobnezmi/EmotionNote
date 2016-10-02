@@ -95,6 +95,7 @@ final class EmotionDataStoreRealm: EmotionDataStore {
         if let results = queryResult {
                 
             for result in results {
+                print(result.weekday)
                 switch(result.emotion) {
                 case Emotion.Happy.rawValue:
                     resultsWeekday[result.weekday].happyCount += 1
@@ -165,7 +166,7 @@ final class EmotionDataStoreRealm: EmotionDataStore {
         emoteObject.emoteAt = Date()
         emoteObject.emotion = emotion.rawValue
         emoteObject.hour    = emoteObject.emoteAt.hour
-        emoteObject.weekday = emoteObject.emoteAt.weekday
+        emoteObject.weekday = emoteObject.emoteAt.weekday - 1
         
         try! realm?.write {
             realm?.add(emoteObject)

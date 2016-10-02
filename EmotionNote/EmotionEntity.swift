@@ -43,16 +43,43 @@ struct EmotionCount {
     func addFrustrate() -> EmotionCount {
         return EmotionCount(happy: happyCount, enjoy: enjoyCount, sad: sadCount, frust: frustCount+1)
     }
+    
+    func sumAllEmotions() -> Int {
+        return happyCount + enjoyCount + sadCount + frustCount
+    }
 }
 
 enum SSWeekday: Int {
-    case Sunday = 1
-    case Monday = 2
-    case Tuesday = 3
-    case Wednesday = 4
-    case Thursday  = 5
-    case Friday    = 6
-    case Saturday  = 7
+    case Sunday = 0
+    case Monday = 1
+    case Tuesday = 2
+    case Wednesday = 3
+    case Thursday  = 4
+    case Friday    = 5
+    case Saturday  = 6
+    
+    static func weekdayCount() -> Int {
+        return 7
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .Sunday:
+            return "日曜日"
+        case .Monday:
+            return "月曜日"
+        case .Tuesday:
+            return "火曜日"
+        case .Wednesday:
+            return "水曜日"
+        case .Thursday:
+            return "木曜日"
+        case .Friday:
+            return "金曜日"
+        case .Saturday:
+            return "土曜日"
+        }
+    }
 }
 
 enum Emotion: Int {

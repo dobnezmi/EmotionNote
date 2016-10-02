@@ -37,6 +37,13 @@ final class Injector {
         container.register(MentalStatisticsPresenter.self) { _ in
             MentalStatisticsPresenterImpl()
         }
+        container.register(WeeklyChartInteractor.self) { _ in
+            WeeklyChartInteractorImpl()
+        }
+        container.register(WeeklyChartPresenter.self) { _ in
+            WeeklyChartPresenterImpl()
+        }
+        
     }
     
     class func setupTest() {

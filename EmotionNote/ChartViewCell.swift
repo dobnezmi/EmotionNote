@@ -17,4 +17,13 @@ class ChartViewCell: UICollectionViewCell {
         targetLabel.frame = CGRect(x: 0, y: offsetY, width: self.frame.width, height: 40)
         baseView.addSubview(targetLabel)
     }
+    
+    func emptyLabel(baseView: UIView, rect: CGRect) {
+        let label = UILabel(frame: rect)
+        label.text = "データなし"
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        
+        baseView.addSubview(label)
+    }
 }

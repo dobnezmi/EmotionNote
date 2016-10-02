@@ -31,6 +31,8 @@ class DailyChartViewController: UIViewController,
                                    forCellWithReuseIdentifier: HourlyChartViewCell.HourlyChartCellID)
         collectionView.register(StatisticViewCell.nib(),
                                    forCellWithReuseIdentifier: StatisticViewCell.StatisticChartCellID)
+        collectionView.register(WeeklyViewCell.nib(),
+                                    forCellWithReuseIdentifier: WeeklyViewCell.WeeklyChartCellID)
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.router.closeAction(viewController: self)
         }).addDisposableTo(disposeBag)
@@ -43,7 +45,7 @@ class DailyChartViewController: UIViewController,
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,12 +56,16 @@ class DailyChartViewController: UIViewController,
             cell.showPeriodicEmotionChart()
             return cell
         case 1:
+            let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            cell.showMentalIndexChart()
+            return cell
+        case 2:
             let cell: HourlyChartViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyChartViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! HourlyChartViewCell
             cell.showHourlyEmoteChart()
             return cell
         default:
-            let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
-            cell.showMentalIndexChart()
+            let cell: WeeklyViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyViewCell.WeeklyChartCellID, for: indexPath as IndexPath) as! WeeklyViewCell
+            cell.showWeeklyEmotionChart()
             return cell
         }
         
