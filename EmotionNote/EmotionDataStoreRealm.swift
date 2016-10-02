@@ -2,7 +2,7 @@
 //  EmotionDataStoreRealm.swift
 //  EmotionNote
 //
-//  Created by 鈴木 慎吾 on 2016/09/18.
+//  Created by Shingo Suzuki on 2016/09/18.
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 

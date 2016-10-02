@@ -2,7 +2,7 @@
 //  FadeTransition.swift
 //  EmotionNote
 //
-//  Created by 鈴木 慎吾 on 2016/08/11.
+//  Created by Shingo Suzuki on 2016/08/11.
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 

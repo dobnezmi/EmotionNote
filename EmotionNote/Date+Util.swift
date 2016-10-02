@@ -2,7 +2,7 @@
 //  Date+Util.swift
 //  EmotionNote
 //
-//  Created by 鈴木 慎吾 on 2016/09/17.
+//  Created by Shingo Suzuki on 2016/09/17.
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 
