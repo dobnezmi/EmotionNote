@@ -193,6 +193,10 @@
 		60C5F9CE1D8E7D9700D858C5 /* Swinject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60C5F9D31D8E831300D858C5 /* MentalIndexChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */; };
 		60C5F9D51D8E848100D858C5 /* MentalIndexChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */; };
+		60EC88111DA14A9400183FFE /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC880F1DA14A9400183FFE /* Nimble.framework */; };
+		60EC88121DA14A9400183FFE /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EC88101DA14A9400183FFE /* Quick.framework */; };
+		60EC88131DA14AA600183FFE /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60EC880F1DA14A9400183FFE /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60EC88141DA14AA600183FFE /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60EC88101DA14A9400183FFE /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60ECC36A1D8ADC78003EB1C6 /* BubbleViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC3691D8ADC78003EB1C6 /* BubbleViewRouter.swift */; };
 		60ECC36D1D8AE516003EB1C6 /* BubbleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC36C1D8AE516003EB1C6 /* BubbleInteractor.swift */; };
 		60ECC36F1D8AE6B7003EB1C6 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ECC36E1D8AE6B7003EB1C6 /* Injector.swift */; };
@@ -235,6 +239,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				60EC88131DA14AA600183FFE /* Nimble.framework in CopyFiles */,
+				60EC88141DA14AA600183FFE /* Quick.framework in CopyFiles */,
 				6033FCB11D93CC8A00862F51 /* Swinject.framework in CopyFiles */,
 				6033FCB21D93CC8A00862F51 /* SwinjectStoryboard.framework in CopyFiles */,
 				6033FCB31D93CC8A00862F51 /* RxBlocking.framework in CopyFiles */,
@@ -441,6 +447,8 @@
 		60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		60C5F9D21D8E831300D858C5 /* MentalIndexChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalIndexChartPresenter.swift; sourceTree = "<group>"; };
 		60C5F9D41D8E848100D858C5 /* MentalIndexChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalIndexChartInteractor.swift; sourceTree = "<group>"; };
+		60EC880F1DA14A9400183FFE /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		60EC88101DA14A9400183FFE /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		60ECC3691D8ADC78003EB1C6 /* BubbleViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewRouter.swift; sourceTree = "<group>"; };
 		60ECC36C1D8AE516003EB1C6 /* BubbleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleInteractor.swift; sourceTree = "<group>"; };
 		60ECC36E1D8AE6B7003EB1C6 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
@@ -469,6 +477,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60EC88121DA14A9400183FFE /* Quick.framework in Frameworks */,
+				60EC88111DA14A9400183FFE /* Nimble.framework in Frameworks */,
 				6033FCB01D93CC6F00862F51 /* RealmSwift.framework in Frameworks */,
 				6033FCAF1D93CC6C00862F51 /* Realm.framework in Frameworks */,
 			);
@@ -926,6 +936,8 @@
 		60FD48011D4E40D000D0D380 /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				60EC880F1DA14A9400183FFE /* Nimble.framework */,
+				60EC88101DA14A9400183FFE /* Quick.framework */,
 				60C5F9CC1D8E7D8900D858C5 /* Swinject.framework */,
 				60392A2D1D8D72E4005CBCFD /* SwinjectStoryboard.framework */,
 				60FD480C1D4E413600D0D380 /* RxBlocking.framework */,
