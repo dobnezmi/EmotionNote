@@ -9,26 +9,30 @@
 import UIKit
 import SpriteKit
 import RxSwift
+import RxCocoa
 
-class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate, UIViewControllerTransitioningDelegate {
+class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate {
 
+    @IBOutlet weak var chartButton: UIButton!
+    
     var skView: SKView!
     var floatingCollectionScene: BubblesScene!
-    let transitionAnimator = FadeTransition()
     let disposeBag = DisposeBag()
     
     var presenter: BubbleViewPresenter!
     var router: BubbleViewRouter!
+    var needResetEmotions: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        skView = SKView(frame: UIScreen.mainScreen().bounds)
+        skView = SKView(frame: UIScreen.main.bounds)
         view.addSubview(skView)
         
         floatingCollectionScene = BubblesScene(size: skView.bounds.size)
         skView.presentScene(floatingCollectionScene)
         floatingCollectionScene.floatingDelegate = self
+        self.view.bringSubview(toFront: chartButton)
 
         bindModel()
     }
@@ -38,13 +42,27 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if needResetEmotions {
+            needResetEmotions = false
+
+            // 各ノードの位置をリセットする
+            floatingCollectionScene.resetNodes()
+        }
+        
+    }
+    
     func bindModel() {
-        presenter.rx_emotions.asObservable().subscribeNext { [weak self] emotions in
+        presenter.rx_emotions.asObservable().subscribe(onNext: { [weak self] emotions in
             for emotion in emotions {
-                let node = BubbleNode.instantiate(emotion)
-                self?.floatingCollectionScene.addChild(node)
+                let node = BubbleNode.instantiate(emotion: emotion)
+                self?.floatingCollectionScene.addChild(node!)
             }
-        }.addDisposableTo(disposeBag)
+        },onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+        
+        chartButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.router.nextScreen(viewController: self)
+        }).addDisposableTo(disposeBag)
     }
 
     // MARK: SIFloatingCollectionSceneDelegate
@@ -52,6 +70,7 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
         var count = 0
         var removedCompletedCount = 0
         
+        needResetEmotions = true
         presenter.didSelectAtIndex(index)
         for node in scene.floatingNodes {
             if let bubble = node as? BubbleNode {
@@ -59,22 +78,13 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate,
                     bubble.removeNormalNode() { [weak self] in
                         removedCompletedCount += 1
                         if removedCompletedCount == scene.floatingNodes.count - 1 {
-                            self?.router?.nextScreen(self, transition: self)
+                            self?.router?.nextScreen(viewController: self)
                         }
                     }
                 }
             }
             count += 1
         }
-    }
-    
-    // MARK: UIViewControllerTransitioningDelegate
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return transitionAnimator
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
     }
 
 }

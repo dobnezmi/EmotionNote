@@ -2,7 +2,7 @@
 //  BubbleInteractor.swift
 //  EmotionNote
 //
-//  Created by 鈴木 慎吾 on 2016/09/15.
+//  Created by Shingo Suzuki on 2016/09/15.
 //  Copyright © 2016年 dobnezmi. All rights reserved.
 //
 
@@ -13,7 +13,9 @@ protocol BubbleInteractor: class {
 }
 
 final class BubbleInteractorImpl: BubbleInteractor {
+    let dataStore: EmotionDataStore = Injector.container.resolve(EmotionDataStore.self)!
+    
     func storeEmotion(emotion: Emotion) {
-        EmotionDataStore.storeEmotion(emotion)
+        dataStore.storeEmotion(emotion: emotion)
     }
 }
