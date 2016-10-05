@@ -47,6 +47,13 @@ class ChartCollectionViewCell: ChartViewCell {
                      bundle: Bundle(for: self))
     }
     
+    func clearViews() {
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
+        }
+        captionLabel1st = nil
+    }
+    
     func showMentalIndexChart() {
         if captionLabel1st != nil {
             return

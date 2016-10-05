@@ -47,6 +47,13 @@ class HourlyChartViewCell: ChartViewCell {
                      bundle: Bundle(for: self))
     }
     
+    func clearViews() {
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
+        }
+        captionLabel1st = nil
+    }
+    
     func showHourlyEmoteChart() {
         if captionLabel1st != nil {
             return

@@ -41,6 +41,13 @@ class WeeklyViewCell: ChartViewCell {
                      bundle: Bundle(for: self))
     }
     
+    func clearViews() {
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
+        }
+        captionLabels.removeAll()
+    }
+    
     func showWeeklyEmotionChart() {
         if captionLabels.count > 0 {
             return

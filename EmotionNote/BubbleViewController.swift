@@ -22,7 +22,11 @@ class BubbleViewController: UIViewController, SIFloatingCollectionSceneDelegate 
     var presenter: BubbleViewPresenter!
     var router: BubbleViewRouter!
     var needResetEmotions: Bool = false
-
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

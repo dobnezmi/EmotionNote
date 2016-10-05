@@ -21,6 +21,8 @@ class DailyChartViewController: UIViewController,
     let transitionAnimator = FadeTransition()
     let disposeBag = DisposeBag()
     var router: DailyChartViewRouter!
+    
+    var needClearViews = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,13 @@ class DailyChartViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        needClearViews = true
+        collectionView.reloadData()
+    }
+    
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -53,18 +62,30 @@ class DailyChartViewController: UIViewController,
         switch(indexPath.item) {
         case 0:
             let cell: StatisticViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticViewCell.StatisticChartCellID, for: indexPath as IndexPath) as! StatisticViewCell
+            if needClearViews {
+                cell.clearViews()
+            }
             cell.showPeriodicEmotionChart()
             return cell
         case 1:
             let cell: ChartCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCollectionViewCell.DailyChartCellID, for: indexPath as IndexPath) as! ChartCollectionViewCell
+            if needClearViews {
+                cell.clearViews()
+            }
             cell.showMentalIndexChart()
             return cell
         case 2:
             let cell: HourlyChartViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyChartViewCell.HourlyChartCellID, for: indexPath as IndexPath) as! HourlyChartViewCell
+            if needClearViews {
+                cell.clearViews()
+            }
             cell.showHourlyEmoteChart()
             return cell
         default:
             let cell: WeeklyViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyViewCell.WeeklyChartCellID, for: indexPath as IndexPath) as! WeeklyViewCell
+            if needClearViews {
+                cell.clearViews()
+            }
             cell.showWeeklyEmotionChart()
             return cell
         }

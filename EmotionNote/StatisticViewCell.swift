@@ -45,6 +45,13 @@ class StatisticViewCell: ChartViewCell {
         return UINib(nibName: NSStringFromClass(self).components(separatedBy: ".").last!,
                      bundle: Bundle(for: self))
     }
+    
+    func clearViews() {
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
+        }
+        captionLabel1st = nil
+    }
 
     func showPeriodicEmotionChart() {
         if captionLabel1st != nil {
