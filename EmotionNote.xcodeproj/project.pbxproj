@@ -169,6 +169,7 @@
 		60392C681D8D8FE6005CBCFD /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60392BE41D8D8FE6005CBCFD /* Transformer.swift */; };
 		60392C691D8D8FE6005CBCFD /* TransformerHorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60392BE51D8D8FE6005CBCFD /* TransformerHorizontalBarChart.swift */; };
 		60392C6A1D8D8FE6005CBCFD /* ViewPortHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60392BE61D8D8FE6005CBCFD /* ViewPortHandler.swift */; };
+		60489A001DA545B0009F3FBE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604899FF1DA545B0009F3FBE /* UIColor+Util.swift */; };
 		6063A1B31D4E246800136C1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063A1B21D4E246800136C1F /* AppDelegate.swift */; };
 		6063A1B51D4E246800136C1F /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6063A1B41D4E246800136C1F /* BubbleViewController.swift */; };
 		6063A1B81D4E246800136C1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6063A1B61D4E246800136C1F /* Main.storyboard */; };
@@ -418,6 +419,7 @@
 		60392BE41D8D8FE6005CBCFD /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		60392BE51D8D8FE6005CBCFD /* TransformerHorizontalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerHorizontalBarChart.swift; sourceTree = "<group>"; };
 		60392BE61D8D8FE6005CBCFD /* ViewPortHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPortHandler.swift; sourceTree = "<group>"; };
+		604899FF1DA545B0009F3FBE /* UIColor+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		6063A1AF1D4E246800136C1F /* EmotionNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmotionNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6063A1B21D4E246800136C1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6063A1B41D4E246800136C1F /* BubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +910,7 @@
 			isa = PBXGroup;
 			children = (
 				60B19FE01D8D03EF004E5E1C /* Date+Util.swift */,
+				604899FF1DA545B0009F3FBE /* UIColor+Util.swift */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1259,6 +1262,7 @@
 				60392C1B1D8D8FE6005CBCFD /* ScatterChartDataSet.swift in Sources */,
 				60392C291D8D8FE6005CBCFD /* DefaultFillFormatter.swift in Sources */,
 				60392C1A1D8D8FE6005CBCFD /* ScatterChartData.swift in Sources */,
+				60489A001DA545B0009F3FBE /* UIColor+Util.swift in Sources */,
 				60392C081D8D8FE6005CBCFD /* CandleChartData.swift in Sources */,
 				60392C531D8D8FE6005CBCFD /* RadarChartRenderer.swift in Sources */,
 				60392C1E1D8D8FE6005CBCFD /* IBubbleChartDataSet.swift in Sources */,
