@@ -1,4 +1,8 @@
 # EmotionNote
+有名どころライブラリの使用例サンプルアプリ
+
+![スクリーンショット1](https://raw.githubusercontent.com/dobnezmi/EmotionNote/master/screen1.png) ![スクリーンショット2](https://raw.githubusercontent.com/dobnezmi/EmotionNote/master/screen2.png)
+
 [![Bitrise](https://www.bitrise.io/app/033ed7656d4ed5a4.svg?token=XLaqD6YIhctzbpL4uh4-8g&branch=master)](https://www.bitrise.io/app/033ed7656d4ed5a4.svg?token=XLaqD6YIhctzbpL4uh4-8g&branch=master)
 
 ## これはなに？
