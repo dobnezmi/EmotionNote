@@ -21,7 +21,7 @@ protocol EmotionDataStore: class {
     // 指定期間のエモーションデータ取得
     func emotionsWithPeriod(period: EmotionPeriod, completion: (EmotionCount)->())
     // エモーション保存
-    func storeEmotion(emotion: Emotion)
+    func storeEmotion(emotion: Emotion, emoteAt: Date?)
     // MARK: -- Delete
     func clearAll()
 }

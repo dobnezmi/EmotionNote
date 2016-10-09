@@ -16,6 +16,6 @@ final class BubbleInteractorImpl: BubbleInteractor {
     let dataStore: EmotionDataStore = Injector.container.resolve(EmotionDataStore.self)!
     
     func storeEmotion(emotion: Emotion) {
-        dataStore.storeEmotion(emotion: emotion)
+        dataStore.storeEmotion(emotion: emotion, emoteAt: nil)
     }
 }

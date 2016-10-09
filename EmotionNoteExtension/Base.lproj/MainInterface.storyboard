@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="EmotionNoteExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Keu-rz-O7b">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmI-Mw-F3Z">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="hGP-Pn-1Lq"/>
+                                            <constraint firstAttribute="height" constant="38" id="iL2-RF-rvC"/>
+                                        </constraints>
+                                        <state key="normal" title="悲しい">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.90196078430000004" green="0.31764705879999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSad:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="4bx-Xt-nKd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVj-x1-9AE">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="7Zf-ec-TV6"/>
+                                            <constraint firstAttribute="width" constant="110" id="p3w-7n-X8F"/>
+                                        </constraints>
+                                        <state key="normal" title="イライラ">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.69803921570000005" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFrustrate:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="5lR-3Y-bT8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zmI-Mw-F3Z" firstAttribute="centerX" secondItem="Keu-rz-O7b" secondAttribute="centerX" id="6xv-sE-Ib6"/>
+                                    <constraint firstItem="pVj-x1-9AE" firstAttribute="centerX" secondItem="Keu-rz-O7b" secondAttribute="centerX" id="esN-Tz-LN6"/>
+                                    <constraint firstItem="zmI-Mw-F3Z" firstAttribute="top" secondItem="pVj-x1-9AE" secondAttribute="bottom" constant="16" id="uSi-eN-DsE"/>
+                                    <constraint firstItem="pVj-x1-9AE" firstAttribute="top" secondItem="Keu-rz-O7b" secondAttribute="top" constant="8" id="wh9-Qj-SVH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzm-vY-T0N">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-lc-mka">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="H2S-hh-rhQ"/>
+                                            <constraint firstAttribute="width" constant="110" id="Uq6-73-S7A"/>
+                                        </constraints>
+                                        <state key="normal" title="楽しい">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onJoy:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="K3Q-Ch-vTu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-0J-MNn">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="RTA-lg-4i3"/>
+                                            <constraint firstAttribute="height" constant="38" id="wf2-t2-tjG"/>
+                                        </constraints>
+                                        <state key="normal" title="嬉しい">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onHappy:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Cvk-SA-021"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Q0c-0J-MNn" firstAttribute="top" secondItem="bEW-lc-mka" secondAttribute="bottom" constant="16" id="J1q-5k-tyq"/>
+                                    <constraint firstItem="bEW-lc-mka" firstAttribute="top" secondItem="nzm-vY-T0N" secondAttribute="top" constant="8" id="N40-DZ-Mcs"/>
+                                    <constraint firstItem="Q0c-0J-MNn" firstAttribute="centerX" secondItem="nzm-vY-T0N" secondAttribute="centerX" id="PpD-gK-9tb"/>
+                                    <constraint firstItem="bEW-lc-mka" firstAttribute="centerX" secondItem="nzm-vY-T0N" secondAttribute="centerX" id="gAc-UC-XKA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nzm-vY-T0N" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="11Z-21-6dU"/>
+                            <constraint firstItem="Keu-rz-O7b" firstAttribute="leading" secondItem="nzm-vY-T0N" secondAttribute="trailing" id="CJj-a3-d1G"/>
+                            <constraint firstItem="Keu-rz-O7b" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="FCC-NN-0T5"/>
+                            <constraint firstItem="nzm-vY-T0N" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="Jiu-vv-Vhe"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="nzm-vY-T0N" secondAttribute="bottom" id="Vtu-fW-eCj"/>
+                            <constraint firstAttribute="trailing" secondItem="Keu-rz-O7b" secondAttribute="trailing" id="aR4-IZ-JGg"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Keu-rz-O7b" secondAttribute="bottom" id="kla-gO-6TW"/>
+                            <constraint firstItem="Keu-rz-O7b" firstAttribute="width" secondItem="nzm-vY-T0N" secondAttribute="width" id="xSk-l5-Fk1"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="120"/>
+                    <connections>
+                        <outlet property="buttonFrust" destination="pVj-x1-9AE" id="aos-iK-Pu5"/>
+                        <outlet property="buttonHappy" destination="Q0c-0J-MNn" id="0YO-IZ-Hc0"/>
+                        <outlet property="buttonJoy" destination="bEW-lc-mka" id="zTA-q2-aZT"/>
+                        <outlet property="buttonSad" destination="zmI-Mw-F3Z" id="ifV-LN-UKu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.799999999999997" y="28.785607196401802"/>
+        </scene>
+    </scenes>
+</document>

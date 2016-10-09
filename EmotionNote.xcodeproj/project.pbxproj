@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		600B144D1DA0050800E3A1AE /* WeeklyChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B144C1DA0050800E3A1AE /* WeeklyChartInteractor.swift */; };
 		600B144F1DA0070200E3A1AE /* WeeklyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B144E1DA0070200E3A1AE /* WeeklyChartPresenter.swift */; };
+		600FBED41DAA2F060037A964 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60800A591D8CD87D00BBFD92 /* Realm.framework */; };
+		600FBED51DAA2F0A0037A964 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60800A5A1D8CD87D00BBFD92 /* RealmSwift.framework */; };
+		600FBED71DAA2F310037A964 /* EmotionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FBED61DAA2F310037A964 /* EmotionEntity.swift */; };
 		601C61B41D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */; };
 		601DF6C51D5CBB24009BC193 /* DailyChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */; };
 		601DF6C81D5CBCBC009BC193 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */; };
@@ -181,6 +184,10 @@
 		6082BD701D6823C000EAE220 /* BubbleViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6082BD6F1D6823C000EAE220 /* BubbleViewPresenter.swift */; };
 		6082BD771D6858F900EAE220 /* ChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6082BD751D6858F900EAE220 /* ChartCollectionViewCell.swift */; };
 		6082BD781D6858F900EAE220 /* ChartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6082BD761D6858F900EAE220 /* ChartCollectionViewCell.xib */; };
+		6087124B1DA9291500FA5495 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6087124A1DA9291500FA5495 /* NotificationCenter.framework */; };
+		6087124E1DA9291500FA5495 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6087124D1DA9291500FA5495 /* TodayViewController.swift */; };
+		608712511DA9291500FA5495 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6087124F1DA9291500FA5495 /* MainInterface.storyboard */; };
+		608712551DA9291500FA5495 /* EmotionNoteExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 608712491DA9291500FA5495 /* EmotionNoteExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		60899E181D901BFA00C84221 /* HourlyChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */; };
 		60899E1A1D901CBB00C84221 /* HourlyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */; };
 		60899E1C1D90275000C84221 /* MentalStatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */; };
@@ -221,6 +228,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6063A1AE1D4E246800136C1F;
 			remoteInfo = EmotionNote;
+		};
+		608712531DA9291500FA5495 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6063A1A71D4E246800136C1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 608712481DA9291500FA5495;
+			remoteInfo = EmotionNoteExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -266,11 +280,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		608712591DA9291500FA5495 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				608712551DA9291500FA5495 /* EmotionNoteExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		600B144C1DA0050800E3A1AE /* WeeklyChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyChartInteractor.swift; sourceTree = "<group>"; };
 		600B144E1DA0070200E3A1AE /* WeeklyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyChartPresenter.swift; sourceTree = "<group>"; };
+		600FBED61DAA2F310037A964 /* EmotionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionEntity.swift; path = EmotionNote/EmotionEntity.swift; sourceTree = SOURCE_ROOT; };
 		601C61B31D899D140094C164 /* SwinjectStoryboard+EmotionNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+EmotionNote.swift"; sourceTree = "<group>"; };
 		601DF6C41D5CBB24009BC193 /* DailyChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartViewController.swift; sourceTree = "<group>"; };
 		601DF6C71D5CBCBC009BC193 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
@@ -437,6 +463,13 @@
 		6082BD6F1D6823C000EAE220 /* BubbleViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewPresenter.swift; sourceTree = "<group>"; };
 		6082BD751D6858F900EAE220 /* ChartCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCollectionViewCell.swift; sourceTree = "<group>"; };
 		6082BD761D6858F900EAE220 /* ChartCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartCollectionViewCell.xib; sourceTree = "<group>"; };
+		608712491DA9291500FA5495 /* EmotionNoteExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmotionNoteExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6087124A1DA9291500FA5495 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		6087124D1DA9291500FA5495 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		608712501DA9291500FA5495 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		608712521DA9291500FA5495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6087125A1DA9299800FA5495 /* EmotionNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmotionNote.entitlements; sourceTree = "<group>"; };
+		6087125B1DA929D800FA5495 /* EmotionNoteExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmotionNoteExtension.entitlements; sourceTree = "<group>"; };
 		60899E171D901BFA00C84221 /* HourlyChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyChartInteractor.swift; sourceTree = "<group>"; };
 		60899E191D901CBB00C84221 /* HourlyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyChartPresenter.swift; sourceTree = "<group>"; };
 		60899E1B1D90275000C84221 /* MentalStatisticsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentalStatisticsInteractor.swift; sourceTree = "<group>"; };
@@ -493,6 +526,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		608712461DA9291500FA5495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600FBED41DAA2F060037A964 /* Realm.framework in Frameworks */,
+				6087124B1DA9291500FA5495 /* NotificationCenter.framework in Frameworks */,
+				600FBED51DAA2F0A0037A964 /* RealmSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -544,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				60392B4F1D8D81D4005CBCFD /* QuartzCore.framework */,
+				6087124A1DA9291500FA5495 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -814,6 +858,7 @@
 				6063A1B11D4E246800136C1F /* EmotionNote */,
 				6063A1C61D4E246900136C1F /* EmotionNoteTests */,
 				6063A1D11D4E246900136C1F /* EmotionNoteUITests */,
+				6087124C1DA9291500FA5495 /* EmotionNoteExtension */,
 				6063A1B01D4E246800136C1F /* Products */,
 				60392B4E1D8D81D4005CBCFD /* Frameworks */,
 			);
@@ -825,6 +870,7 @@
 				6063A1AF1D4E246800136C1F /* EmotionNote.app */,
 				6063A1C31D4E246900136C1F /* EmotionNoteTests.xctest */,
 				6063A1CE1D4E246900136C1F /* EmotionNoteUITests.xctest */,
+				608712491DA9291500FA5495 /* EmotionNoteExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -832,6 +878,7 @@
 		6063A1B11D4E246800136C1F /* EmotionNote */ = {
 			isa = PBXGroup;
 			children = (
+				6087125A1DA9299800FA5495 /* EmotionNote.entitlements */,
 				60B19FDF1D8D03DB004E5E1C /* Category */,
 				60FD48021D4E40E500D0D380 /* Thirdparty */,
 				6017D78D1D577C26002D3593 /* Resources */,
@@ -906,6 +953,18 @@
 			name = parts;
 			sourceTree = "<group>";
 		};
+		6087124C1DA9291500FA5495 /* EmotionNoteExtension */ = {
+			isa = PBXGroup;
+			children = (
+				600FBED61DAA2F310037A964 /* EmotionEntity.swift */,
+				6087125B1DA929D800FA5495 /* EmotionNoteExtension.entitlements */,
+				6087124D1DA9291500FA5495 /* TodayViewController.swift */,
+				6087124F1DA9291500FA5495 /* MainInterface.storyboard */,
+				608712521DA9291500FA5495 /* Info.plist */,
+			);
+			path = EmotionNoteExtension;
+			sourceTree = "<group>";
+		};
 		60B19FDF1D8D03DB004E5E1C /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,10 +1034,12 @@
 				6063A1AC1D4E246800136C1F /* Frameworks */,
 				6063A1AD1D4E246800136C1F /* Resources */,
 				60345D421D5221DB00F10991 /* CopyFiles */,
+				608712591DA9291500FA5495 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				608712541DA9291500FA5495 /* PBXTargetDependency */,
 			);
 			name = EmotionNote;
 			productName = EmotionNote;
@@ -1023,13 +1084,30 @@
 			productReference = 6063A1CE1D4E246900136C1F /* EmotionNoteUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		608712481DA9291500FA5495 /* EmotionNoteExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 608712581DA9291500FA5495 /* Build configuration list for PBXNativeTarget "EmotionNoteExtension" */;
+			buildPhases = (
+				608712451DA9291500FA5495 /* Sources */,
+				608712461DA9291500FA5495 /* Frameworks */,
+				608712471DA9291500FA5495 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmotionNoteExtension;
+			productName = EmotionNoteExtension;
+			productReference = 608712491DA9291500FA5495 /* EmotionNoteExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6063A1A71D4E246800136C1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = dobnezmi;
 				TargetAttributes = {
@@ -1038,6 +1116,11 @@
 						DevelopmentTeam = M5SD5L4U96;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					6063A1C21D4E246900136C1F = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1048,6 +1131,16 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
 						TestTargetID = 6063A1AE1D4E246800136C1F;
+					};
+					608712481DA9291500FA5495 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = M5SD5L4U96;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1067,6 +1160,7 @@
 				6063A1AE1D4E246800136C1F /* EmotionNote */,
 				6063A1C21D4E246900136C1F /* EmotionNoteTests */,
 				6063A1CD1D4E246900136C1F /* EmotionNoteUITests */,
+				608712481DA9291500FA5495 /* EmotionNoteExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1097,6 +1191,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		608712471DA9291500FA5495 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				608712511DA9291500FA5495 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1393,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		608712451DA9291500FA5495 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600FBED71DAA2F310037A964 /* EmotionEntity.swift in Sources */,
+				6087124E1DA9291500FA5495 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1303,6 +1414,11 @@
 			isa = PBXTargetDependency;
 			target = 6063A1AE1D4E246800136C1F /* EmotionNote */;
 			targetProxy = 6063A1CF1D4E246900136C1F /* PBXContainerItemProxy */;
+		};
+		608712541DA9291500FA5495 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 608712481DA9291500FA5495 /* EmotionNoteExtension */;
+			targetProxy = 608712531DA9291500FA5495 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1321,6 +1437,14 @@
 				6063A1BC1D4E246800136C1F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6087124F1DA9291500FA5495 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				608712501DA9291500FA5495 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1425,7 +1549,9 @@
 		6063A1D81D4E246900136C1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EmotionNote/EmotionNote.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M5SD5L4U96;
@@ -1447,7 +1573,9 @@
 		6063A1D91D4E246900136C1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EmotionNote/EmotionNote.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M5SD5L4U96;
@@ -1541,6 +1669,55 @@
 			};
 			name = Release;
 		};
+		608712561DA9291500FA5495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = EmotionNoteExtension/EmotionNoteExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M5SD5L4U96;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmotionNote",
+				);
+				INFOPLIST_FILE = EmotionNoteExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fc2.web.energist.EmotionNote.EmotionNoteExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		608712571DA9291500FA5495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = EmotionNoteExtension/EmotionNoteExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M5SD5L4U96;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmotionNote",
+				);
+				INFOPLIST_FILE = EmotionNoteExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fc2.web.energist.EmotionNote.EmotionNoteExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1576,6 +1753,15 @@
 			buildConfigurations = (
 				6063A1DE1D4E246900136C1F /* Debug */,
 				6063A1DF1D4E246900136C1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		608712581DA9291500FA5495 /* Build configuration list for PBXNativeTarget "EmotionNoteExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				608712561DA9291500FA5495 /* Debug */,
+				608712571DA9291500FA5495 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+let groupSuiteName = "group.EmotionNote"
+
 enum EmotionPeriod {
     case Week
     case Month

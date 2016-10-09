@@ -161,9 +161,9 @@ final class EmotionDataStoreRealm: EmotionDataStore {
     
     // MARK: -- Store/Update
     // エモーション保存
-    func storeEmotion(emotion: Emotion) {
+    func storeEmotion(emotion: Emotion, emoteAt: Date?) {
         let emoteObject = EmotionEntity()
-        emoteObject.emoteAt = Date()
+        emoteObject.emoteAt = emoteAt ?? Date()
         emoteObject.emotion = emotion.rawValue
         emoteObject.hour    = emoteObject.emoteAt.hour
         emoteObject.weekday = emoteObject.emoteAt.weekday - 1
